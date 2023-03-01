@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638103501211866380
-    m_Hash: 1010242877
+      ticks: 638113023511108395
+    m_Hash: 1966945893
   m_LockFileStatus:
     m_FilePath: C:/Users/ASUS/Documents/ProjetS2/My project/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638103501416098866
-    m_Hash: 1035663092
+      ticks: 638113023511108395
+    m_Hash: 1132395109
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
