@@ -1,5 +1,3 @@
-
-using System;
 using UnityEngine;
 using Mirror;
 
@@ -8,34 +6,62 @@ public class PlayerSetup : NetworkBehaviour
    [SerializeField]
    private Behaviour[] componentsToDisable;
 
-   private Camera sceneCamera;
+   [SerializeField] private string remoteLayerName = "RemotePlayer";
+
+   private Camera _sceneCamera;
    private void Start()
    {
-      // Disable components if it is not our player so we don't have the control of other players.
-      // Size of array will be 4 : player controller, player motor, audio listener, camera
+      // Disable components if it is not my player so we don't have the control of other players.
       if (!isLocalPlayer)
       {
-         for (int i = 0; i < componentsToDisable.Length; i++)
-         {
-            componentsToDisable[i].enabled = false;
-         }
+         //if is not my player, disable all components of other player and assign him the layer "RemotePlayer"
+         //so it can send information when only another player is shot
+         DisableComponents();
+         AssignRemotePlayer();
       }
       else
       {
-         sceneCamera = Camera.main;
+         _sceneCamera = Camera.main;
 
-         if (sceneCamera != null)
+         if (_sceneCamera != null)
          {
-            sceneCamera.gameObject.SetActive(false);
+            _sceneCamera.gameObject.SetActive(false);
          }
       }
+      
+      GetComponent<Player>().Setup();
+   }
+   
+   public override void OnStartClient()
+   {
+      //start when a player join
+      base.OnStartClient();
+      string netID = GetComponent<NetworkIdentity>().netId.ToString();
+      Player player = GetComponent<Player>();
+      GameManager.RegisterPlayer(netID, player);
    }
 
+   private void AssignRemotePlayer()
+   {
+      //Assign layer "RemotePlayer"
+      gameObject.layer = LayerMask.NameToLayer(remoteLayerName);
+   }
+
+   private void DisableComponents()
+   {
+      for (int i = 0; i < componentsToDisable.Length; i++)
+      {
+         componentsToDisable[i].enabled = false;
+      }
+   }
    private void OnDisable()
    {
-      if (sceneCamera != null)
+      //start when a player leave
+      if (_sceneCamera != null)
       {
-         sceneCamera.gameObject.SetActive(true);
+         _sceneCamera.gameObject.SetActive(true);
       }
+      
+      GameManager.UnregisterPlayer(transform.name);
    }
 }
