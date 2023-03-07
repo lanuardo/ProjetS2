@@ -39,13 +39,14 @@ public class Player : NetworkBehaviour
         }
 
         //enable collider
-        Collider col = GetComponent<Collider>();
-        if (col != null)
-            col.enabled = true;
+        Physics.IgnoreLayerCollision(6,7,false);
+        //Doesn't work ! Look comment below in Die method.
+
     }
 
     private IEnumerator Respawn()
     {
+        //delay of spawn
         yield return new WaitForSeconds(GameManager.Instance.matchSettings.respawnTimer);
         
         Transform spawnPoint = NetworkManager.singleton.GetStartPosition();
@@ -54,16 +55,16 @@ public class Player : NetworkBehaviour
         CharacterController _characterController = GetComponent<CharacterController>();
         _characterController.enabled = false;
         
-        Transform transform1 = transform;
-        transform1.position = spawnPoint.position;
-        transform1.rotation = spawnPoint.rotation;
+        transform.position = spawnPoint.position;
+        transform.rotation = spawnPoint.rotation;
         SetDefaults();
+        
         //enable it again
         _characterController.enabled = true;
     }
     private void Update()
     {
-        //just for test : pressing "k" kills the player by inflicting 200 damage.
+        //for test : pressing "k" kills the player by inflicting 200 damage.
         if (!isLocalPlayer)
             return;
         
@@ -71,7 +72,8 @@ public class Player : NetworkBehaviour
         {
             RpcTakeDamage(200);
         }
-        
+
+
     }
 
     [ClientRpc] //server to client
@@ -99,10 +101,11 @@ public class Player : NetworkBehaviour
         }
         
         //disable collider
-        Collider col = GetComponent<Collider>();
-        if (col != null)
-            col.enabled = false;
+        Physics.IgnoreLayerCollision(6,7,true);
+        //!! Doesn't work cuz Character Controller has its own Capsule Collider and cannot do anything about it !!
+        //feat: many people complained about it but still no new features !
         
+
         Debug.Log(transform.name + " has been killed");
 
         StartCoroutine(Respawn());

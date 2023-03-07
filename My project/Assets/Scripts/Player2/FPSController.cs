@@ -33,7 +33,10 @@ namespace Player2
     
         void Start()
         {
+            //Get our component
             _characterController = GetComponent<CharacterController>();
+            
+            //Locking the cursor and make it invisible
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
@@ -41,51 +44,69 @@ namespace Player2
         void Update()
         {
             #region  Handles Movement
+
+            //Get values of the transform's actual position in each axis X (right) and Z (forward)
+            Vector3 forward = transform.forward;
+            Vector3 right = transform.right;
             
-            Vector3 forward = transform.TransformDirection(Vector3.forward);
-            Vector3 right = transform.TransformDirection(Vector3.right);
-        
             //Left Shit to walk
             bool isWalking = Input.GetKey(KeyCode.LeftShift);
-            float curSpeedX = canMove ? (isWalking ? walkSpeed : runSpeed) * Input.GetAxis("Vertical") : 0;
-            float curSpeedY = canMove ? (isWalking ? walkSpeed : runSpeed) * Input.GetAxis("Horizontal") : 0;
+            
+            //Calculate movement speed in each axis
+            float curSpeedZ = canMove ? (isWalking ? walkSpeed : runSpeed) * Input.GetAxis("Vertical") : 0;
+            float curSpeedX = canMove ? (isWalking ? walkSpeed : runSpeed) * Input.GetAxis("Horizontal") : 0;
+            
+            //Get the position in Y axis of the calculated movement vector (initially = 0)
             float movementDirectionY = _moveDirection.y;
-            _moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+            
+            //update the movement vector in axis X
+            _moveDirection = (forward * curSpeedZ) + (right * curSpeedX);
 
             #endregion
 
             #region Handles Jumping
 
+            //Checks if the button for jumping is pressed, if the player can move, and if he is on the ground
             if (Input.GetButton("Jump") && canMove && _characterController.isGrounded)
             {
+                // player can jump
                 _moveDirection.y = jumpPower;
             }
             else
             {
+                //the player isn't jumping or already not on the ground
                 _moveDirection.y = movementDirectionY;
             }
 
+            // if player is not on the ground, make him go down with gravity
             if (!_characterController.isGrounded)
             {
                 _moveDirection.y -= gravity * Time.deltaTime;
             }
 
             #endregion
-
-            #region Handles Rotation
-
+            
+            //apply calculated movement vector above
             _characterController.Move(_moveDirection * Time.deltaTime);
 
+            #region Handles Rotation
+            
             if (canMove)
             {
+                //Calculate rotation around the X axis of the camera and limiting Vertical Rotation
                 _rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
-                //Limiting Rotate Axe X
                 _rotationX = Mathf.Clamp(_rotationX, -lookXLimit, lookXLimit);
+
+                //Apply the calculated rotation around the X axis to the camera. We only want the camera to move vertically. Not the entire player
                 playerCamera.transform.localRotation = Quaternion.Euler(_rotationX, 0,0);
+                
+                //Apply directly the calculated rotation around the Y axis
+                //Player is only moving horizontally
                 transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
             }
 
             #endregion
+
         }
     }
 }

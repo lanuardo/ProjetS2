@@ -34,7 +34,7 @@ public class PlayerSetup : NetworkBehaviour
    
    public override void OnStartClient()
    {
-      //start when a player join
+      //starts when a player join
       base.OnStartClient();
       string netID = GetComponent<NetworkIdentity>().netId.ToString();
       Player player = GetComponent<Player>();
@@ -49,14 +49,14 @@ public class PlayerSetup : NetworkBehaviour
 
    private void DisableComponents()
    {
-      for (int i = 0; i < componentsToDisable.Length; i++)
+      foreach (var t in componentsToDisable)
       {
-         componentsToDisable[i].enabled = false;
+         t.enabled = false;
       }
    }
    private void OnDisable()
    {
-      //start when a player leave
+      //starts when a player leave
       if (_sceneCamera != null)
       {
          _sceneCamera.gameObject.SetActive(true);
