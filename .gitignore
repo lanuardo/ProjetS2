@@ -18,7 +18,10 @@ Assets/Plugins/Editor/JetBrains*
 [Bb]uilds/
 Assets/AssetStoreTools*
 # Unity local user project setting
+ProjectSettings/
 UserSettings/
+Mirror/packages
+.mfractor
 
 # Visual Studio cache directory
 .vs/
