@@ -8,6 +8,13 @@ public class PlayerSetup : NetworkBehaviour
 
    [SerializeField] private string remoteLayerName = "RemotePlayer";
 
+   [SerializeField] private string dontDrawLayerName= "DontDraw";
+   [SerializeField] private GameObject playerGraphics;
+
+   [SerializeField] private GameObject playerUIPrefab;
+   private GameObject playerUIInstance;
+   
+   
    private Camera _sceneCamera;
    private void Start()
    {
@@ -27,11 +34,27 @@ public class PlayerSetup : NetworkBehaviour
          {
             _sceneCamera.gameObject.SetActive(false);
          }
+         
+         // désactiver la partie graphique du joueur local "DontDraw"
+         SetLayerRecursively(playerGraphics, LayerMask.NameToLayer(dontDrawLayerName));
+         
+         // definition d'un player ui propre à celui-ci (qui n'est pas accessible par d'autre joueur
+         playerUIInstance = Instantiate(playerUIPrefab);
+
       }
       
       GetComponent<Player>().Setup();
    }
-   
+
+   private void SetLayerRecursively(GameObject obj, int newlayer)
+   {
+      obj.layer = newlayer;
+
+      foreach (Transform child in obj.transform)
+      {
+         SetLayerRecursively(child.gameObject, newlayer);
+      }
+   }
    public override void OnStartClient()
    {
       //starts when a player join
@@ -56,6 +79,8 @@ public class PlayerSetup : NetworkBehaviour
    }
    private void OnDisable()
    {
+      Destroy(playerUIInstance);
+      
       //starts when a player leave
       if (_sceneCamera != null)
       {
