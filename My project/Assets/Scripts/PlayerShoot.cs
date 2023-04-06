@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class PlayerShoot : NetworkBehaviour
 {
-    public PlayerWeapon weapon;
+    [SerializeField]
+    private PlayerWeapon weapon;
+
+    [SerializeField] private GameObject weaponGFX;
+
+    [SerializeField] private string weaponLayerName = "Weapon";
+    
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask mask;
     void Start()
@@ -14,6 +20,8 @@ public class PlayerShoot : NetworkBehaviour
             Debug.LogError("None camera was selected");
             this.enabled = false;
         }
+
+        weaponGFX.layer = LayerMask.NameToLayer(weaponLayerName);
     }
 
     private void Update()
