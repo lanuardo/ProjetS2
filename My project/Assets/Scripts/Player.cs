@@ -2,8 +2,11 @@ using System.Collections;
 using Mirror;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerSetup))]
+
 public class Player : NetworkBehaviour
 {
+    
     [field: SyncVar]
     public bool IsAlive { get; protected set; } = true;
 
@@ -16,7 +19,14 @@ public class Player : NetworkBehaviour
     [SerializeField] 
     private Behaviour[] disableOnDeath;
     private bool[] _wasEnabledOnStart;
+
+    [SerializeField] 
+    private GameObject[] disableGameObjectsOnDeath;
     
+    [SerializeField] private GameObject deathEffect;
+
+    [SerializeField] private GameObject spawnEffect;
+
     public void Setup()
     {
         //put whether a component was enabled or not in the bool array from the array of components
@@ -38,10 +48,25 @@ public class Player : NetworkBehaviour
             disableOnDeath[i].enabled = _wasEnabledOnStart[i];
         }
 
+        // reactive les game objects
+        foreach (var t in disableGameObjectsOnDeath)
+        {
+            t.SetActive(true);
+        }
+
+        if (isLocalPlayer)
+        {
+            GameManager.Instance.SetCameraActive(false);
+            GetComponent<PlayerSetup>().playerUIInstance.SetActive(true);
+
+        }
         //enable collider
         Physics.IgnoreLayerCollision(6,7,false);
         //Doesn't work ! Look comment below in Die method.
 
+        //apparition du systeme de particule de mort
+        GameObject _gfxIns = Instantiate(spawnEffect, transform.position, Quaternion.identity);
+        Destroy(_gfxIns, 3f);
     }
 
     private IEnumerator Respawn()
@@ -58,6 +83,8 @@ public class Player : NetworkBehaviour
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
         SetDefaults();
+        
+        
         
         //enable it again
         _characterController.enabled = true;
@@ -95,9 +122,16 @@ public class Player : NetworkBehaviour
     {
         IsAlive = false;
 
+        // desactive les components lors de la mort
         foreach (var t in disableOnDeath)
         {
             t.enabled = false;
+        }
+        
+        // desactive les game objects
+        foreach (var t in disableGameObjectsOnDeath)
+        {
+            t.SetActive(false);
         }
         
         //disable collider
@@ -106,8 +140,18 @@ public class Player : NetworkBehaviour
         //feat: many people complained about it but still no new features !
         
 
+        //apparition du systeme de particule de mort
+        GameObject _gfxIns = Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(_gfxIns, 3f);
         Debug.Log(transform.name + " has been killed");
 
+        //changement de camera
+        if (isLocalPlayer)
+        {
+            GameManager.Instance.SetCameraActive(true);
+            GetComponent<PlayerSetup>().playerUIInstance.SetActive(false);
+        }
+        
         StartCoroutine(Respawn());
     }
 }

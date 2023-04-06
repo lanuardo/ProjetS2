@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     //making singleton
     public static GameManager Instance;
 
+
+    [SerializeField] private GameObject sceneCamera;
     private void Awake()
     {
         if (Instance == null)
@@ -22,6 +24,16 @@ public class GameManager : MonoBehaviour
         Debug.LogError("More than one instance of GameManager in the scene");
     }
 
+    public void SetCameraActive(bool isActive)
+    {
+        if (sceneCamera == null)
+        {
+            return;
+        }
+        
+        sceneCamera.SetActive(isActive);
+    }
+    
     public static void RegisterPlayer(string netID, Player player)
     {
         //Add in the dictionary "Player" + id as key (his name), and the object Player.
