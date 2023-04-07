@@ -30,12 +30,13 @@ namespace Player2
 
         private CharacterController _characterController;
 
+        
     
         void Start()
         {
             //Get our component
             _characterController = GetComponent<CharacterController>();
-            
+
             //Locking the cursor and make it invisible
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -43,6 +44,14 @@ namespace Player2
 
         void Update()
         {
+            if (PauseMenu.isOn)
+            {
+                _characterController.Move(Vector3.zero);
+
+
+                return;
+            }
+            
             #region  Handles Movement
 
             //Get values of the transform's actual position in each axis X (right) and Z (forward)

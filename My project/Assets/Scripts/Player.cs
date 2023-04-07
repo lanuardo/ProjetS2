@@ -24,20 +24,43 @@ public class Player : NetworkBehaviour
     private GameObject[] disableGameObjectsOnDeath;
     
     [SerializeField] private GameObject deathEffect;
-
     [SerializeField] private GameObject spawnEffect;
 
+    private bool firstSetup = true;
     public void Setup()
     {
-        //put whether a component was enabled or not in the bool array from the array of components
-        _wasEnabledOnStart = new bool[disableOnDeath.Length];
-        for (int i = 0; i < disableOnDeath.Length; i++)
+        if (isLocalPlayer)
         {
-            _wasEnabledOnStart[i] = disableOnDeath[i].enabled;
+            // changement de caméra
+            GameManager.Instance.SetCameraActive(false);
+            GetComponent<PlayerSetup>().playerUIInstance.SetActive(true);
         }
-        SetDefaults();
+
+        CmdBroadCastNewPlayerSetup();
     }
 
+    [Command]
+    private void CmdBroadCastNewPlayerSetup()
+    {
+        RpcSetupOnAllClient();
+    }
+
+    [ClientRpc]
+    private void RpcSetupOnAllClient()
+    {
+        if (firstSetup)
+        {
+            firstSetup = false;
+            //put whether a component was enabled or not in the bool array from the array of components
+            _wasEnabledOnStart = new bool[disableOnDeath.Length];
+            for (int i = 0; i < disableOnDeath.Length; i++)
+            {
+                _wasEnabledOnStart[i] = disableOnDeath[i].enabled;
+            }
+        }
+
+        SetDefaults();
+    }
     private void SetDefaults()
     {
         IsAlive = true;
@@ -54,12 +77,7 @@ public class Player : NetworkBehaviour
             t.SetActive(true);
         }
 
-        if (isLocalPlayer)
-        {
-            GameManager.Instance.SetCameraActive(false);
-            GetComponent<PlayerSetup>().playerUIInstance.SetActive(true);
-
-        }
+        
         //enable collider
         Physics.IgnoreLayerCollision(6,7,false);
         //Doesn't work ! Look comment below in Die method.
@@ -82,9 +100,10 @@ public class Player : NetworkBehaviour
         
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
-        SetDefaults();
+
+        yield return new WaitForSeconds(0.1f);
         
-        
+        Setup();
         
         //enable it again
         _characterController.enabled = true;

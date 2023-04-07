@@ -24,6 +24,11 @@ public class PlayerShoot : NetworkBehaviour
 
     private void Update()
     {
+        if (PauseMenu.isOn)
+        {
+            return;
+        }
+        
         currentweapon = _weaponManager.getcurrentWeapon();
         if (currentweapon.fireRate<=0f)
         {

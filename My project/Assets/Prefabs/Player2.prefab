@@ -432,9 +432,9 @@ MonoBehaviour:
   syncInterval: 0.1
   primaryWeapon:
     name: Automatic gun
-    damage: 10
+    damage: 5
     range: 100
-    fireRate: 100
+    fireRate: 15
     graphics: {fileID: 4353128053605263299, guid: a2fd9cc91410a5f4bb584ec98b46bc27, type: 3}
   weaponLayerName: Weapon
   weaponHolder: {fileID: 8542026593876236041}

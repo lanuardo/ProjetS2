@@ -38,9 +38,10 @@ public class PlayerSetup : NetworkBehaviour
          // definition d'un player ui propre à celui-ci (qui n'est pas accessible par d'autre joueur
          playerUIInstance = Instantiate(playerUIPrefab);
 
+         GetComponent<Player>().Setup();
+
       }
       
-      GetComponent<Player>().Setup();
    }
 
   
@@ -69,9 +70,11 @@ public class PlayerSetup : NetworkBehaviour
    private void OnDisable()
    {
       Destroy(playerUIInstance);
-      
-      GameManager.Instance.SetCameraActive(true);
-      
+      if (isLocalPlayer)
+      {
+         GameManager.Instance.SetCameraActive(true);
+      }
+
       GameManager.UnregisterPlayer(transform.name);
    }
 }
