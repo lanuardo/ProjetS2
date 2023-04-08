@@ -92,7 +92,7 @@ public class PlayerShoot : NetworkBehaviour
             //send information if a player is shot
             if (hit.collider.CompareTag("Player"))
             {
-                CmdPlayerShot(hit.collider.name, currentweapon.damage);
+                CmdPlayerShot(hit.collider.name, currentweapon.damage, transform.name);
             }
             
             CmdOnHit(hit.point,hit.normal);
@@ -100,13 +100,15 @@ public class PlayerShoot : NetworkBehaviour
     }
 
     [Command] //client to server
-    private void CmdPlayerShot(string playerId, float damage)
+    private void CmdPlayerShot(string playerId, float damage, string sourceID)
     {
         //print info if a player is shot whether its my player or not
         Debug.Log(playerId + "has been shot");
 
         //Give damage to the player who got shot
         Player player = GameManager.GetPlayer(playerId);
-        player.RpcTakeDamage(damage);
+        player.RpcTakeDamage(damage, sourceID);
+        
+        
     }
 }

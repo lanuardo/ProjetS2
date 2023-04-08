@@ -35,13 +35,13 @@ public class PalyerController : MonoBehaviour
          if (Cursor.lockState!=CursorLockMode.None)
          {
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
          }
          
          motor.Move(Vector3.zero);
          motor.Rotate(Vector3.zero);
          motor.RotateCamera(Vector3.zero);
-         motor.ApplyJump(Vector3.zero);
-         
+
          return;
       }
 
@@ -49,6 +49,7 @@ public class PalyerController : MonoBehaviour
       if (Cursor.lockState!=CursorLockMode.Locked)
       {
          Cursor.lockState = CursorLockMode.Locked;
+         Cursor.visible = false;
       }
       
       // Calculate the speed of the player

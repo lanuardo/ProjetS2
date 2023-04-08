@@ -1,7 +1,6 @@
-using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class GameManager : MonoBehaviour
 {
     private static Dictionary<string, Player> _players = new Dictionary<string, Player>();
@@ -26,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     public void SetCameraActive(bool isActive)
     {
-        if (sceneCamera == null)
+        if (sceneCamera is null)
         {
             return;
         }
@@ -52,5 +51,10 @@ public class GameManager : MonoBehaviour
     public static Player GetPlayer(string playerId)
     {
         return _players[playerId];
+    }
+
+    public static Player[] GetAllPlayers()
+    {
+        return _players.Values.ToArray();
     }
 }

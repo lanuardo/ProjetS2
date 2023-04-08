@@ -8,6 +8,9 @@ namespace Player2
     {
         [SerializeField]
         public float jumpPower = 3f;
+        
+        private PlayerMotor motor;
+
 
         [SerializeField]
         public float gravity = 10f;
@@ -46,10 +49,24 @@ namespace Player2
         {
             if (PauseMenu.isOn)
             {
-                _characterController.Move(Vector3.zero);
-
+                //active la souris dans le menu
+                if (Cursor.lockState!=CursorLockMode.None)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
+         
+                motor.Move(Vector3.zero);
+                motor.Rotate(Vector3.zero);
+                motor.RotateCamera(Vector3.zero);
 
                 return;
+            }
+            //desactive la souris en jeu
+            if (Cursor.lockState!=CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
             
             #region  Handles Movement

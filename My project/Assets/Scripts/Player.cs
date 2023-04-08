@@ -16,6 +16,10 @@ public class Player : NetworkBehaviour
     //SyncVar allow to modify the variable in every instance. Its like ref/global variable.
     [SyncVar] private float _currentHealth;
 
+    public int kills;
+    public int deaths;
+    
+    
     [SerializeField] 
     private Behaviour[] disableOnDeath;
     private bool[] _wasEnabledOnStart;
@@ -116,14 +120,14 @@ public class Player : NetworkBehaviour
         
         if (Input.GetKeyDown(KeyCode.K))
         {
-            RpcTakeDamage(200);
+            RpcTakeDamage(200, "Joueur");
         }
 
 
     }
 
     [ClientRpc] //server to client
-    public void RpcTakeDamage(float damage)
+    public void RpcTakeDamage(float damage, string sourceID)
     {
         if (!IsAlive)
             return;
@@ -133,14 +137,22 @@ public class Player : NetworkBehaviour
 
         if (_currentHealth <= 0)
         {
-            Die();
+            Die(sourceID);
         }
     }
 
-    private void Die()
+    private void Die(string sourceID)
     {
         IsAlive = false;
 
+        Player sourcePlayer = GameManager.GetPlayer(sourceID);
+        if (sourcePlayer is null)
+        {
+            sourcePlayer.kills++;
+        }
+
+        deaths++;
+        
         // desactive les components lors de la mort
         foreach (var t in disableOnDeath)
         {

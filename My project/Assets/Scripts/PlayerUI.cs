@@ -7,6 +7,8 @@ using UnityEngine.UI;
         
         [SerializeField] private GameObject pauseMenu;
 
+        [SerializeField] private GameObject scoreBoard;
+
         private void Start()
         {
             PauseMenu.isOn = false;
@@ -16,6 +18,14 @@ using UnityEngine.UI;
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 TogglePauseMenu();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                scoreBoard.SetActive(true);
+            }else if (Input.GetKeyUp(KeyCode.Tab))
+            {
+                scoreBoard.SetActive(false);
             }
         }
 
