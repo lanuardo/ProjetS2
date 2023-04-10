@@ -29,9 +29,32 @@ public class PalyerController : MonoBehaviour
 
    private void Update()
    {
+      if (PauseMenu.isOn)
+      {
+         //active la souris dans le menu
+         if (Cursor.lockState!=CursorLockMode.None)
+         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+         }
+         
+         motor.Move(Vector3.zero);
+         motor.Rotate(Vector3.zero);
+         motor.RotateCamera(Vector3.zero);
+
+         return;
+      }
+
+      //desactive la souris en jeu
+      if (Cursor.lockState!=CursorLockMode.Locked)
+      {
+         Cursor.lockState = CursorLockMode.Locked;
+         Cursor.visible = false;
+      }
+      
       // Calculate the speed of the player
-      float xMov = Input.GetAxisRaw("Horizontal");
-      float zMov = Input.GetAxisRaw("Vertical");
+      float xMov = Input.GetAxis("Horizontal");
+      float zMov = Input.GetAxis("Vertical");
 
       Vector3 moveHorizontal = transform.right * xMov;
       Vector3 moveVertical = transform.forward * zMov;

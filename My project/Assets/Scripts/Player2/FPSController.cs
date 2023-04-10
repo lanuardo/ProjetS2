@@ -8,6 +8,9 @@ namespace Player2
     {
         [SerializeField]
         public float jumpPower = 3f;
+        
+        private PlayerMotor motor;
+
 
         [SerializeField]
         public float gravity = 10f;
@@ -30,12 +33,13 @@ namespace Player2
 
         private CharacterController _characterController;
 
+        
     
         void Start()
         {
             //Get our component
             _characterController = GetComponent<CharacterController>();
-            
+
             //Locking the cursor and make it invisible
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -43,6 +47,28 @@ namespace Player2
 
         void Update()
         {
+            if (PauseMenu.isOn)
+            {
+                //active la souris dans le menu
+                if (Cursor.lockState!=CursorLockMode.None)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
+         
+                motor.Move(Vector3.zero);
+                motor.Rotate(Vector3.zero);
+                motor.RotateCamera(Vector3.zero);
+
+                return;
+            }
+            //desactive la souris en jeu
+            if (Cursor.lockState!=CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            
             #region  Handles Movement
 
             //Get values of the transform's actual position in each axis X (right) and Z (forward)

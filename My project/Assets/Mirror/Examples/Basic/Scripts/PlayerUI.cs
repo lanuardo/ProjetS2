@@ -1,16 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Mirror.Examples.Basic
 {
+
+
     public class PlayerUI : MonoBehaviour
     {
-        [Header("Player Components")]
-        public Image image;
+        [Header("Player Components")] public Image image;
 
-        [Header("Child Text Objects")]
-        public Text playerNameText;
+        [Header("Child Text Objects")] public Text playerNameText;
         public Text playerDataText;
+
+        [SerializeField] private GameObject pauseMenu;
 
         // Sets a highlight color for the local player
         public void SetLocalPlayer()
@@ -37,5 +40,19 @@ namespace Mirror.Examples.Basic
             // Show the data in the UI
             playerDataText.text = string.Format("Data: {0:000}", newPlayerData);
         }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                TogglePauseMenu();
+            }
+        }
+
+        public void TogglePauseMenu()
+        {
+            pauseMenu.SetActive(!pauseMenu.activeSelf);
+        }
     }
 }
+
