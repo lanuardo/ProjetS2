@@ -1,7 +1,6 @@
 using Mirror;
 using UnityEngine;
 
-<<<<<<< HEAD
 [RequireComponent(typeof(WeaponManager))]
 public class PlayerShoot : NetworkBehaviour
 {
@@ -12,14 +11,6 @@ public class PlayerShoot : NetworkBehaviour
     [SerializeField] private LayerMask mask;
     
     
-=======
-
-public class PlayerShoot : NetworkBehaviour
-{
-    public PlayerWeapon weapon;
-    [SerializeField] private Camera cam;
-    [SerializeField] private LayerMask mask;
->>>>>>> parent of 29af99ed (void)
     void Start()
     {
         if (cam == null)
@@ -27,16 +18,14 @@ public class PlayerShoot : NetworkBehaviour
             Debug.LogError("None camera was selected");
             this.enabled = false;
         }
-<<<<<<< HEAD
+
         
         _weaponManager = GetComponent<WeaponManager>();
-=======
->>>>>>> parent of 29af99ed (void)
     }
 
     private void Update()
     {
-<<<<<<< HEAD
+
         if (PauseMenu.isOn)
         {
             return;
