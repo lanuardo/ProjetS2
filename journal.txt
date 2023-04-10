@@ -1,0 +1,17 @@
+05/04/2023
+téléchargement d'un model d'une arme et d'un joueur
+ajout du début d'un UI réticule + création d'un layer afin de ne pas afficher des elt du joueur à d'autre joueur.
+
+06/04/2023
+amélioration du visuel de l'arme + fix du passage à travers le mur de l'arme
+mise en place d'un fire rate + préparation à la création de plusieurs classe d'arme future (currentweapon)
+ajout d'animation pour l'arme
+ajout d'animation de mort et de réaparition (problème: avec la disparition du joueur à la mort et avec le "collider" du joueur)
+
+07/04/2023
+ajout d'un systeme de lobby + ajout d'un menu pause (problème: on ne peut pas appuyer sur les boutons du menu pause)
+
+08/04/2023
+ajout d'un tableau de score (erreur d'ajout de kill)
+correction de problème mineur : ceux du 06/04/2023 et 07/04/2023
+cependant découverte de bug plus important de temps en temps lorsque l'un des joueurs tire l'autre est deco + on voit l'arme de l'autre joueur étrangement et à travers les murs.
