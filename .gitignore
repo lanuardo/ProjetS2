@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> parent of 29af99ed (void)
 # Created by https://www.gitignore.io/api/unity
 # Edit at https://www.gitignore.io/?templates=unity
 
@@ -17,7 +21,14 @@ Assets/Plugins/Editor/JetBrains*
 [Bb]uilds/
 Assets/AssetStoreTools*
 # Unity local user project setting
+<<<<<<< HEAD
 UserSettings/
+=======
+ProjectSettings/
+UserSettings/
+Mirror/packages
+.mfractor
+>>>>>>> parent of 29af99ed (void)
 
 # Visual Studio cache directory
 .vs/
@@ -49,3 +60,56 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+<<<<<<< HEAD
+=======
+=======
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# Folders
+_obj
+_test
+
+# Architecture specific extensions/prefixes
+*.[568vq]
+[568vq].out
+
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+
+_testmain.go
+
+*.exe
+*.test
+*.prof
+
+# WebStorm
+*.iml
+
+# Directory-based project format:
+.idea/
+.idea/workspace.xml
+**/.idea/workspace.xml
+
+# mac hidden files
+.DS_Store
+
+##other
+#node_modules/
+#bower_components/
+.tmp
+#.sass-cache
+#builds/**/images/*
+#*.ogg
+#*.mp3
+#*.mp4
+#*.png
+#*.jpeg
+*.psd
+>>>>>>> interface
+>>>>>>> parent of 29af99ed (void)

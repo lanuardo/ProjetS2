@@ -8,9 +8,12 @@ namespace Player2
     {
         [SerializeField]
         public float jumpPower = 3f;
+<<<<<<< HEAD
         
         private PlayerMotor motor;
 
+=======
+>>>>>>> parent of 29af99ed (void)
 
         [SerializeField]
         public float gravity = 10f;
@@ -33,13 +36,20 @@ namespace Player2
 
         private CharacterController _characterController;
 
+<<<<<<< HEAD
         
+=======
+>>>>>>> parent of 29af99ed (void)
     
         void Start()
         {
             //Get our component
             _characterController = GetComponent<CharacterController>();
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> parent of 29af99ed (void)
             //Locking the cursor and make it invisible
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -47,6 +57,7 @@ namespace Player2
 
         void Update()
         {
+<<<<<<< HEAD
             if (PauseMenu.isOn)
             {
                 //active la souris dans le menu
@@ -69,6 +80,8 @@ namespace Player2
                 Cursor.visible = false;
             }
             
+=======
+>>>>>>> parent of 29af99ed (void)
             #region  Handles Movement
 
             //Get values of the transform's actual position in each axis X (right) and Z (forward)

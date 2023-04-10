@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 ﻿using System;
 using UnityEngine;
+=======
+﻿using UnityEngine;
+>>>>>>> parent of 29af99ed (void)
 using UnityEngine.UI;
 
 namespace Mirror.Examples.Basic
 {
+<<<<<<< HEAD
 
 
     public class PlayerUI : MonoBehaviour
@@ -15,6 +20,17 @@ namespace Mirror.Examples.Basic
 
         [SerializeField] private GameObject pauseMenu;
 
+=======
+    public class PlayerUI : MonoBehaviour
+    {
+        [Header("Player Components")]
+        public Image image;
+
+        [Header("Child Text Objects")]
+        public Text playerNameText;
+        public Text playerDataText;
+
+>>>>>>> parent of 29af99ed (void)
         // Sets a highlight color for the local player
         public void SetLocalPlayer()
         {
@@ -40,6 +56,7 @@ namespace Mirror.Examples.Basic
             // Show the data in the UI
             playerDataText.text = string.Format("Data: {0:000}", newPlayerData);
         }
+<<<<<<< HEAD
 
         private void Update()
         {
@@ -56,3 +73,7 @@ namespace Mirror.Examples.Basic
     }
 }
 
+=======
+    }
+}
+>>>>>>> parent of 29af99ed (void)

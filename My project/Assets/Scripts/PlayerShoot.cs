@@ -1,6 +1,7 @@
 using Mirror;
 using UnityEngine;
 
+<<<<<<< HEAD
 [RequireComponent(typeof(WeaponManager))]
 public class PlayerShoot : NetworkBehaviour
 {
@@ -11,6 +12,14 @@ public class PlayerShoot : NetworkBehaviour
     [SerializeField] private LayerMask mask;
     
     
+=======
+
+public class PlayerShoot : NetworkBehaviour
+{
+    public PlayerWeapon weapon;
+    [SerializeField] private Camera cam;
+    [SerializeField] private LayerMask mask;
+>>>>>>> parent of 29af99ed (void)
     void Start()
     {
         if (cam == null)
@@ -18,12 +27,16 @@ public class PlayerShoot : NetworkBehaviour
             Debug.LogError("None camera was selected");
             this.enabled = false;
         }
+<<<<<<< HEAD
         
         _weaponManager = GetComponent<WeaponManager>();
+=======
+>>>>>>> parent of 29af99ed (void)
     }
 
     private void Update()
     {
+<<<<<<< HEAD
         if (PauseMenu.isOn)
         {
             return;
@@ -88,27 +101,54 @@ public class PlayerShoot : NetworkBehaviour
         RaycastHit hit;
         
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, currentweapon.range, mask))
+=======
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
+        }
+    }
+
+    [Client] 
+    private void Shoot()
+    {
+        RaycastHit hit;
+        
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.range, mask))
+>>>>>>> parent of 29af99ed (void)
         {
             //send information if a player is shot
             if (hit.collider.CompareTag("Player"))
             {
+<<<<<<< HEAD
                 CmdPlayerShot(hit.collider.name, currentweapon.damage, transform.name);
             }
             
             CmdOnHit(hit.point,hit.normal);
+=======
+                CmdPlayerShot(hit.collider.name, weapon.damage);
+            }
+>>>>>>> parent of 29af99ed (void)
         }
     }
 
     [Command] //client to server
+<<<<<<< HEAD
     private void CmdPlayerShot(string playerId, float damage, string sourceID)
+=======
+    private void CmdPlayerShot(string playerId, float damage)
+>>>>>>> parent of 29af99ed (void)
     {
         //print info if a player is shot whether its my player or not
         Debug.Log(playerId + "has been shot");
 
         //Give damage to the player who got shot
         Player player = GameManager.GetPlayer(playerId);
+<<<<<<< HEAD
         player.RpcTakeDamage(damage, sourceID);
         
         
+=======
+        player.RpcTakeDamage(damage);
+>>>>>>> parent of 29af99ed (void)
     }
 }

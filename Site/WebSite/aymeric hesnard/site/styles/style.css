@@ -1,0 +1,429 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+html,
+body {
+	margin: 0px;
+	background: #fbfcfd;
+}
+
+* {
+	font-family: 'Noto Sans', sans-serif;
+	box-sizing: border-box;
+}
+
+.home {
+	background-image: url("../Image1.png");
+	height: 600px;
+	width: 100%;
+	position: relative;
+	display: flex;
+	background-size: cover;
+	justify-content: center;
+	align-items: center;
+}
+.homebis {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+
+	top: 0;
+	left: 0;
+}
+
+
+.utilisée {
+	color: rgb(0, 255, 51);
+}
+
+.nonutilisée {
+	color: rgb(255, 0, 0);
+}
+
+header h1 {
+	display: inline;
+}
+@font-face {
+	font-family: "zorque";
+	src : url("fonts/zorque.otf") format("");
+}
+
+h3{
+	font-family: "zorque";
+}
+
+header {
+	padding: 5px 10px;
+	background-color: #FFF;
+	box-shadow: 0 2px 2px -1px rgba(0, 0, 0, .2);
+	position: sticky;
+	top: 0px;
+	z-index: 2;
+}
+
+header ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0;
+	overflow: hidden;
+}
+
+header ul li:first-child {
+	margin-top: 5px;
+	margin-right: 15px;
+	margin-left: 5px;
+}
+
+header ul li a.navlink:hover {
+	background-color: rgb(6, 119, 123);
+	color: #ffffff;
+	border-radius: 5px;
+	transition: background-color .3s;
+}
+
+header ul li {
+	float: left;
+}
+
+header ul li a.navlink {
+	display: block;
+	color: #000;
+	text-align: center;
+	padding: 11px 16px;
+	margin: 6px 0;
+	text-decoration: none;
+	transition: background-color .3s;
+}
+
+header ul li a.connect {
+	background-color: rgb(220, 220, 220);
+	border-radius: 6px;
+}
+
+.right {
+	float: right;
+}
+
+.container {
+	margin:  35px 50px;
+	min-height: 631px;
+	margin-bottom: 0;
+}
+
+.container2 {
+	margin-left: 200px;
+}
+/* Page connexion */
+
+.form-connect {
+	margin: 0 25%;
+}
+
+.form-connect label::selection {
+	background: none;
+}
+
+.submit-btn {
+	border: 1px solid rgb(230, 230, 230);
+	background: rgb(230, 230, 230);
+	padding: 3px 10px;
+	border-radius: 50px;
+	outline: none;
+	box-shadow: none;
+}
+
+.submit-btn:focused,
+.submit-btn:active {
+	outline: none;
+	box-shadow: none;
+}
+
+.submit-btn:hover {
+	border: 1px solid rgb(200, 200, 200);
+	background: rgb(215, 215, 215);
+	box-shadow: none;
+}
+
+.form-connect .icon {
+	margin: 0;
+	margin-right: 5px;
+	color: #000;
+	font-size: 16px;
+}
+
+.form-connect input {
+	margin-bottom: 10px;
+}
+
+.form-connect-submit {
+	margin-top: 10px;
+}
+
+/* Accueil */
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -15px;
+	margin-left: -15px;
+}
+
+.fp-items {
+	flex: 0 0 33%;
+	max-width: 33%;
+	position:relative;
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.fp-items2 {
+	flex: 0 0 33%;
+	max-width: 33%;
+	position:relative;
+	width: 150%;
+	padding-right:575px ;
+	
+}
+
+.item {
+	padding: 30px;
+	transition: all .3s;
+	margin-bottom: 30px;
+	box-shadow: 0 0 5px 0 rgba(68, 43, 148, .2);
+	background: #fff;
+	border-radius: 6px;
+	height: 250px;
+}
+
+.item2 {
+	padding: 30px;
+	margin-bottom: 70px;
+	box-shadow: 0 0 5px 0 rgba(68, 43, 148, .2);
+	background: #fff;
+	border-radius: 6px;
+	height: 500px;
+	width: 550px;
+
+
+}
+
+*
+
+.item-animation:hover {
+	transition: all .3s;
+	transform: translateY(-5px);
+}
+
+.item h4 {
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 15px;
+}
+
+h3 {
+	font-weight: 700;
+	margin-bottom: 0;
+	font-size: 32px;
+	text-align: center;
+}
+
+.items-container h3 {
+	margin-bottom: 60px;
+}
+
+.items-container {
+	max-width: 1140px;
+}
+
+.icon {
+	font-size: 36px;
+	color: #44309e;
+	margin-bottom: 30px;
+}
+
+/* Boutique */
+
+.shop-items {
+	flex: 0 0 33%;
+	max-width: 33%;
+	position: relative;
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.grid {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -15px;
+	margin-left: -15px;
+}
+
+.shop-group h3 {
+	text-align: left;
+	color: rgb(200, 200, 200);
+	font-size: 25px;
+	margin: 15px 0;
+	font-style: italic;
+}
+
+.shop-item {
+	padding: 15px;
+	min-height: 305px;
+}
+
+.shop-item-large {
+	min-height: 332px;
+}
+
+.shop-item img {
+	width: 150px;
+}
+
+.shop-item h2 {
+	color: black;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.shop-item .price h3 {
+	font-style: normal;
+	color: black;
+	text-align: left;
+	margin-left: 10px;
+}
+
+.shop-items .buy-section {
+	display: flex;
+}
+
+.buy-section {
+	margin-top: 25px;
+	margin-bottom: 10px;
+}
+
+.shop-items .buy-section .price,
+.shop-items .buy-section .buy-btn {
+	flex: 0 0 50%;
+	max-width: 50%;
+}
+
+.buy-btn button {
+	margin-top: 22px;
+	border-radius: 20px;
+	outline: none;
+}
+
+.buy-btn .product-buy-btn {
+    width: 125px;
+    height: 30px;
+    font-size: 15px;
+}
+
+.shop-items .buy-section .buy-btn button {
+	float: right;
+}
+
+.shop-items .buy-section .buy-btn button:hover,
+.shop-items .buy-section .buy-btn button:active {
+	outline: none;
+}
+
+/* Pied de page */
+
+footer {
+	background: rgb(120, 120, 120);
+	color: white;
+	font-size: 8px;
+	min-height: 25px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	box-shadow: 0 -1px 3px 1px rgba(0, 0, 0, .2);
+}
+
+footer h3 {
+	font-size: 12px;
+	margin: 0;
+}
+
+/* Fiche produit */
+
+.product-container {
+	margin: 35px 200px;
+	min-height: 750px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.product-head {
+	display: flex;
+}
+
+.first-column {
+	flex-basis: 75%;
+}
+
+.second-column {
+	flex-basis: 25%;
+}
+
+.product-price {
+	background: rgb(250, 250, 250);
+    padding: 15px;
+    border-radius: 30px;
+    border: 1px solid rgb(140,140,140);
+}
+
+.product-price h3 {
+	margin-top: 5px;
+}
+
+/* Police pour les icones */
+
+.fa,
+.fas {
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+}
+
+.fas {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	line-height: 1;
+}
+
+.fa-microchip:before {
+	content: "\f2db";
+}
+
+.fa-shield-alt:before {
+	content: "\f3ed";
+}
+
+.fa-shipping-fast:before {
+	content: "\f48b";
+}
+
+.fa-user:before {
+	content: "\f007";
+}
+
+.fa-lock:before {
+	content: "\f023";
+}
+
+.fa-shopping-cart:before {
+	content: "\f07a";
+}
+
+@font-face {
+	font-family: 'Font Awesome 5 Free';
+	font-style: normal;
+	font-weight: 900;
+	font-display: block;
+	src: url("../fonts/fa-solid-900.ttf") format("truetype")
+}

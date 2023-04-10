@@ -29,6 +29,7 @@ public class PalyerController : MonoBehaviour
 
    private void Update()
    {
+<<<<<<< HEAD
       if (PauseMenu.isOn)
       {
          //active la souris dans le menu
@@ -55,6 +56,11 @@ public class PalyerController : MonoBehaviour
       // Calculate the speed of the player
       float xMov = Input.GetAxis("Horizontal");
       float zMov = Input.GetAxis("Vertical");
+=======
+      // Calculate the speed of the player
+      float xMov = Input.GetAxisRaw("Horizontal");
+      float zMov = Input.GetAxisRaw("Vertical");
+>>>>>>> parent of 29af99ed (void)
 
       Vector3 moveHorizontal = transform.right * xMov;
       Vector3 moveVertical = transform.forward * zMov;

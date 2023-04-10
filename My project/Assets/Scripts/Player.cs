@@ -2,11 +2,16 @@ using System.Collections;
 using Mirror;
 using UnityEngine;
 
+<<<<<<< HEAD
 [RequireComponent(typeof(PlayerSetup))]
 
 public class Player : NetworkBehaviour
 {
     
+=======
+public class Player : NetworkBehaviour
+{
+>>>>>>> parent of 29af99ed (void)
     [field: SyncVar]
     public bool IsAlive { get; protected set; } = true;
 
@@ -16,6 +21,7 @@ public class Player : NetworkBehaviour
     //SyncVar allow to modify the variable in every instance. Its like ref/global variable.
     [SyncVar] private float _currentHealth;
 
+<<<<<<< HEAD
     public int kills;
     public int deaths;
     
@@ -65,6 +71,23 @@ public class Player : NetworkBehaviour
 
         SetDefaults();
     }
+=======
+    [SerializeField] 
+    private Behaviour[] disableOnDeath;
+    private bool[] _wasEnabledOnStart;
+    
+    public void Setup()
+    {
+        //put whether a component was enabled or not in the bool array from the array of components
+        _wasEnabledOnStart = new bool[disableOnDeath.Length];
+        for (int i = 0; i < disableOnDeath.Length; i++)
+        {
+            _wasEnabledOnStart[i] = disableOnDeath[i].enabled;
+        }
+        SetDefaults();
+    }
+
+>>>>>>> parent of 29af99ed (void)
     private void SetDefaults()
     {
         IsAlive = true;
@@ -75,6 +98,7 @@ public class Player : NetworkBehaviour
             disableOnDeath[i].enabled = _wasEnabledOnStart[i];
         }
 
+<<<<<<< HEAD
         // reactive les game objects
         foreach (var t in disableGameObjectsOnDeath)
         {
@@ -82,13 +106,18 @@ public class Player : NetworkBehaviour
         }
 
         
+=======
+>>>>>>> parent of 29af99ed (void)
         //enable collider
         Physics.IgnoreLayerCollision(6,7,false);
         //Doesn't work ! Look comment below in Die method.
 
+<<<<<<< HEAD
         //apparition du systeme de particule de mort
         GameObject _gfxIns = Instantiate(spawnEffect, transform.position, Quaternion.identity);
         Destroy(_gfxIns, 3f);
+=======
+>>>>>>> parent of 29af99ed (void)
     }
 
     private IEnumerator Respawn()
@@ -104,10 +133,14 @@ public class Player : NetworkBehaviour
         
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
+<<<<<<< HEAD
 
         yield return new WaitForSeconds(0.1f);
         
         Setup();
+=======
+        SetDefaults();
+>>>>>>> parent of 29af99ed (void)
         
         //enable it again
         _characterController.enabled = true;
@@ -120,14 +153,22 @@ public class Player : NetworkBehaviour
         
         if (Input.GetKeyDown(KeyCode.K))
         {
+<<<<<<< HEAD
             RpcTakeDamage(200, "Joueur");
+=======
+            RpcTakeDamage(200);
+>>>>>>> parent of 29af99ed (void)
         }
 
 
     }
 
     [ClientRpc] //server to client
+<<<<<<< HEAD
     public void RpcTakeDamage(float damage, string sourceID)
+=======
+    public void RpcTakeDamage(float damage)
+>>>>>>> parent of 29af99ed (void)
     {
         if (!IsAlive)
             return;
@@ -137,6 +178,7 @@ public class Player : NetworkBehaviour
 
         if (_currentHealth <= 0)
         {
+<<<<<<< HEAD
             Die(sourceID);
         }
     }
@@ -157,23 +199,37 @@ public class Player : NetworkBehaviour
         
         
         // desactive les components lors de la mort
+=======
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        IsAlive = false;
+
+>>>>>>> parent of 29af99ed (void)
         foreach (var t in disableOnDeath)
         {
             t.enabled = false;
         }
         
+<<<<<<< HEAD
         // desactive les game objects
         foreach (var t in disableGameObjectsOnDeath)
         {
             t.SetActive(false);
         }
         
+=======
+>>>>>>> parent of 29af99ed (void)
         //disable collider
         Physics.IgnoreLayerCollision(6,7,true);
         //!! Doesn't work cuz Character Controller has its own Capsule Collider and cannot do anything about it !!
         //feat: many people complained about it but still no new features !
         
 
+<<<<<<< HEAD
         //apparition du systeme de particule de mort
         GameObject _gfxIns = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(_gfxIns, 3f);
@@ -186,6 +242,10 @@ public class Player : NetworkBehaviour
             GetComponent<PlayerSetup>().playerUIInstance.SetActive(false);
         }
         
+=======
+        Debug.Log(transform.name + " has been killed");
+
+>>>>>>> parent of 29af99ed (void)
         StartCoroutine(Respawn());
     }
 }
