@@ -6,6 +6,11 @@ public class GameManager : MonoBehaviour
     private static Dictionary<string, Player> _players = new Dictionary<string, Player>();
     private const string PlayerIdPrefix = "Player";
     public MatchSettings matchSettings;
+
+    public delegate void OnPlaterKilledCallBack(string player, string source);
+
+    public OnPlaterKilledCallBack onPlaterKilledCallBack;
+    
     
     //making singleton
     public static GameManager Instance;

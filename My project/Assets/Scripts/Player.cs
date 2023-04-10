@@ -149,9 +149,12 @@ public class Player : NetworkBehaviour
         if (sourcePlayer is null)
         {
             sourcePlayer.kills++;
+            GameManager.Instance.onPlaterKilledCallBack.Invoke(transform.name,sourcePlayer.name);
+
         }
 
         deaths++;
+        
         
         // desactive les components lors de la mort
         foreach (var t in disableOnDeath)
