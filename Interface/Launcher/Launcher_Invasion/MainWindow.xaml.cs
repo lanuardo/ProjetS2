@@ -28,12 +28,12 @@ namespace Launcher_Invasion
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Process.Start("C:/Users/alexl/epita/projets2/ProjetS2/My project/Build/My Project.exe");
+            Process.Start("path/Invasion.exe");
         }
 
         private void Website_Click(object sender, RoutedEventArgs e)
         {
-            string htmlFilePath = "C:/Users/alexl/epita/projets2/ProjetS2/Site/WebSite/index.html";
+            string htmlFilePath = "C:/Users/mcblo/Desktop/PROJET_S2/Launcher/Launcher_Invasion/WebSite/index.html";
             string fullPath = System.IO.Path.GetFullPath(htmlFilePath);
             ProcessStartInfo psi = new ProcessStartInfo
             {
