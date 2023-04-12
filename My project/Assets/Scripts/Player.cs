@@ -54,13 +54,14 @@ public class Player : NetworkBehaviour
     {
         if (firstSetup)
         {
-            firstSetup = false;
             //put whether a component was enabled or not in the bool array from the array of components
             _wasEnabledOnStart = new bool[disableOnDeath.Length];
             for (int i = 0; i < disableOnDeath.Length; i++)
             {
                 _wasEnabledOnStart[i] = disableOnDeath[i].enabled;
             }
+            firstSetup = false;
+
         }
 
         SetDefaults();
@@ -146,7 +147,7 @@ public class Player : NetworkBehaviour
         IsAlive = false;
 
         Player sourcePlayer = GameManager.GetPlayer(sourceID);
-        if (sourcePlayer is null)
+        if (sourcePlayer is not null)
         {
             sourcePlayer.kills++;
             GameManager.Instance.onPlaterKilledCallBack.Invoke(transform.name,sourcePlayer.name);

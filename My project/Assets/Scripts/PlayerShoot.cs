@@ -19,6 +19,7 @@ public class PlayerShoot : NetworkBehaviour
             this.enabled = false;
         }
         
+        
         _weaponManager = GetComponent<WeaponManager>();
     }
 
@@ -103,7 +104,7 @@ public class PlayerShoot : NetworkBehaviour
     private void CmdPlayerShot(string playerId, float damage, string sourceID)
     {
         //print info if a player is shot whether its my player or not
-        Debug.Log(playerId + "has been shot");
+        Debug.Log(playerId + "has been shot by" +sourceID);
 
         //Give damage to the player who got shot
         Player player = GameManager.GetPlayer(playerId);
