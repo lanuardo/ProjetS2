@@ -7,6 +7,6 @@ public class KillFeedItem : MonoBehaviour
 
     public void SetUp(string player, string source)
     {
-        text.text = source + " as killed " + player;
+        text.text = source + " has killed " + player;
     }
 }

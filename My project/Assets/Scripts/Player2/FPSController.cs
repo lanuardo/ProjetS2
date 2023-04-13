@@ -8,9 +8,6 @@ namespace Player2
     {
         [SerializeField]
         public float jumpPower = 3f;
-        
-        private PlayerMotor motor;
-
 
         [SerializeField]
         public float gravity = 10f;
@@ -56,10 +53,7 @@ namespace Player2
                     Cursor.visible = true;
                 }
          
-                motor.Move(Vector3.zero);
-                motor.Rotate(Vector3.zero);
-                motor.RotateCamera(Vector3.zero);
-
+              
                 return;
             }
             //desactive la souris en jeu

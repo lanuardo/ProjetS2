@@ -94,7 +94,13 @@ public class PlayerShoot : NetworkBehaviour
             {
                 CmdPlayerShot(hit.collider.name, currentweapon.damage, transform.name);
             }
-            
+
+            if (hit.collider.CompareTag("Intelligence"))
+            {
+                IA ai = hit.collider.gameObject.GetComponent<IA>();
+                ai.TakeDamage(currentweapon.damage);
+            }
+
             CmdOnHit(hit.point,hit.normal);
         }
     }

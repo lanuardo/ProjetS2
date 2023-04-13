@@ -146,7 +146,7 @@ public class Player : NetworkBehaviour
         IsAlive = false;
 
         Player sourcePlayer = GameManager.GetPlayer(sourceID);
-        if (sourcePlayer is null)
+        if (sourcePlayer is not null)
         {
             sourcePlayer.kills++;
             GameManager.Instance.onPlaterKilledCallBack.Invoke(transform.name,sourcePlayer.name);
