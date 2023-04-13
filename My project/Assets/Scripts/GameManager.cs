@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static Dictionary<string, Player> _players = new Dictionary<string, Player>();
+    private static Dictionary<string, IA> _intelligences = new Dictionary<string, IA>();
     private const string PlayerIdPrefix = "Player";
     public MatchSettings matchSettings;
 
