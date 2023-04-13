@@ -334,6 +334,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4879562948018398721, guid: 266d216e6b54c4b40a5a67e553df1d87, type: 3}
+      propertyPath: onlineScene
+      value: Assets/Scenes/Proposition de terrain.unity
+      objectReference: {fileID: 0}
     - target: {fileID: 4879562948018398724, guid: 266d216e6b54c4b40a5a67e553df1d87, type: 3}
       propertyPath: m_Name
       value: NetworkManager
