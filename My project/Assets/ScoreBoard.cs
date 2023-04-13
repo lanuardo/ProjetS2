@@ -5,7 +5,7 @@ public class ScoreBoard : MonoBehaviour
     [SerializeField] private GameObject playerScoreBoardItem;
 
     [SerializeField] private Transform playerScoreBoardList;
-    
+
     private void OnEnable()
     {
         //recuperer une array de tout les joueurs du serv
@@ -17,13 +17,11 @@ public class ScoreBoard : MonoBehaviour
         {
             GameObject itemgo = Instantiate(playerScoreBoardItem, playerScoreBoardList);
             ScoreBoardItem item = itemgo.GetComponent<ScoreBoardItem>();
-            if (item !=null)
+            if (item != null)
             {
                 item.Setup(player);
             }
         }
-        
-
     }
 
     private void OnDisable()

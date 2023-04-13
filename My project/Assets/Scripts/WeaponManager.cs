@@ -12,6 +12,7 @@ public class WeaponManager : NetworkBehaviour
     private WeaponGraphics _currentGraphics;
     void Start()
     {
+        
         EquipWeapon(primaryWeapon);
     }
 
@@ -28,7 +29,7 @@ public class WeaponManager : NetworkBehaviour
         {
             Debug.LogError("no weapongraphics in : "+ weaponIns.name);
         }
-        
+
         if (isLocalPlayer)
         {
             Utilitaire.SetLayerRecursively(weaponIns,LayerMask.NameToLayer(weaponLayerName));
