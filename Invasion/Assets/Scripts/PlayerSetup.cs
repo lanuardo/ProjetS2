@@ -38,6 +38,11 @@ public class PlayerSetup : NetworkBehaviour
          // definition d'un player ui propre à celui-ci (qui n'est pas accessible par d'autre joueur
          playerUIInstance = Instantiate(playerUIPrefab);
 
+         PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
+
+         ui.SetPlayer(GetComponent<Player>());
+
+
          GetComponent<Player>().Setup();
 
       }

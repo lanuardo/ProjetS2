@@ -16,6 +16,12 @@ public class Player : NetworkBehaviour
     //SyncVar allow to modify the variable in every instance. Its like ref/global variable.
     [SyncVar] private float _currentHealth;
 
+    public float GetHealthPct()
+    {
+        return (float)_currentHealth / maxHealth;
+    }
+
+
     public int kills;
     public int deaths;
     
@@ -121,7 +127,7 @@ public class Player : NetworkBehaviour
         
         if (Input.GetKeyDown(KeyCode.K))
         {
-            RpcTakeDamage(200, "Joueur");
+            RpcTakeDamage(25, "Joueur");
         }
 
 

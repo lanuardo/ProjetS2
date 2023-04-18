@@ -4,10 +4,22 @@ using UnityEngine.UI;
 
     public class PlayerUI : MonoBehaviour
     {
-        
+
+        [SerializeField] private RectTransform HealthFill;
+
+        private Player player;
+
+
         [SerializeField] private GameObject pauseMenu;
 
         [SerializeField] private GameObject scoreBoard;
+
+        public void SetPlayer(Player _player)
+        {
+            player = _player;
+        }
+
+
 
         private void Start()
         {
@@ -15,6 +27,8 @@ using UnityEngine.UI;
         }
         private void Update()
         {
+            SetHealthAmount(player.GetHealthPct());
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 TogglePauseMenu();
@@ -34,5 +48,10 @@ using UnityEngine.UI;
             pauseMenu.SetActive(!pauseMenu.activeSelf);
             PauseMenu.isOn = pauseMenu.activeSelf;
         }
-    }
+        void SetHealthAmount(float _amount)
+        {
+            HealthFill.localScale = new Vector3(1f, _amount, 1f);
+        }
+
+}
 
