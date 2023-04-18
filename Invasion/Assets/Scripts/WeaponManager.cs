@@ -68,7 +68,7 @@ public class WeaponManager : NetworkBehaviour
 
         isReloading = true;
 
-        //CmdOnReload(); for animation
+        CmdOnReload();
 
         yield return new WaitForSeconds(_currentWeapon.reloadTime); //on cree un delai de rechargement
 
@@ -77,6 +77,23 @@ public class WeaponManager : NetworkBehaviour
         isReloading = false;
 
         Debug.Log("Reloading finished ...");
+    }
+    [Command]
+    void CmdOnReload()
+    {
+        RpcOnReload();
+    }
+
+    [ClientRpc]
+    void RpcOnReload()
+    {
+        Animator animator = _currentGraphics.GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.SetTrigger("Reload");
+        }
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(_currentWeapon.reloadSound);
     }
 
 }

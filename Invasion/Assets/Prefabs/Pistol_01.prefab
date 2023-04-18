@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3124621759489534188}
   - component: {fileID: 2411984076834716809}
+  - component: {fileID: 9081590521151471209}
   m_Layer: 0
   m_Name: Pistol_01
   m_TagString: Untagged
@@ -220,6 +221,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 6713711070102197549}
   hitPrefab: {fileID: 7930202924284297622, guid: 3f90a50678feeeb46a360b98d2d1eb10, type: 3}
+--- !u!95 &9081590521151471209
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3122797674335244114}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 388e19a3810c0e44c9a3c588a5e6bf5d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &3122866925553814356
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3123213364437551690}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0000026799737, y: 0.06886235, z: -0.057883568}
+  m_LocalPosition: {x: -0.000002679974, y: 0.06886235, z: -0.05788357}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
