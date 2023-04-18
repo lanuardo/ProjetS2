@@ -10,12 +10,12 @@ public class IA : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
     public float health = 50f;
     [SerializeField] private GameObject explosionEffect;
-    [SerializeField] private AudioClip explosionSound;
+    //[SerializeField] private AudioClip explosionSound;
 
 
     //Patrolling
     public Vector3 walkPoint;
-    private bool walkPointSet;
+    [SerializeField]private bool walkPointSet;
     public float walkPointRange;
 
     //Attacking
@@ -121,11 +121,9 @@ public class IA : MonoBehaviour
 
         GameObject _gfxIns = Instantiate(explosionEffect, transform.position, Quaternion.identity);
         Destroy(_gfxIns,3f);
-        AudioSource audioSource = GetComponent<AudioSource>();
-        audioSource.PlayOneShot(explosionSound);
+        //AudioSource audioSource = GetComponent<AudioSource>();
+        //audioSource.PlayOneShot(explosionSound);
         DestroyEnemy();
-            
-        //Destroy(gameObject); //to replace with another function with explosion animation.
         
     }
     

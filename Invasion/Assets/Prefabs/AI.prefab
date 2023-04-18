@@ -139,7 +139,7 @@ MonoBehaviour:
   player: {fileID: 8633837538644315890, guid: 5c1326a60cb5cc649ba2af1fbc302b5e, type: 3}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1024
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -147,7 +147,7 @@ MonoBehaviour:
   explosionEffect: {fileID: 846404763889092794, guid: 15affaa4c0b036f40925c7cce56aa9b4, type: 3}
   explosionSound: {fileID: 8300000, guid: 24134c9076a4e034595765be0a2a5cf9, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 5
+  walkPointRange: 10
   timeBetweenAttacks: 0.5
   sightRange: 5
   attackRange: 1
