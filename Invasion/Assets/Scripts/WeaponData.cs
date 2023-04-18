@@ -10,5 +10,12 @@ public class WeaponData : ScriptableObject
 
     public float fireRate = 0f;
 
+    public int magazineSize = 10; //capacité du chargeur (valeur par défaut)
+
+    public float reloadTime = 1.5f; //temsp de rechargement de l'arme
+
     public GameObject graphics;
+
+    public AudioClip shootSound;
+    public AudioClip reloadSound;
 }

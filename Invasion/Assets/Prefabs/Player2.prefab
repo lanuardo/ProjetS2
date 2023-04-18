@@ -465,9 +465,11 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
-  primaryWeapon: {fileID: 11400000, guid: 46e59ae35455b704587d0ac452a93177, type: 2}
+  primaryWeapon: {fileID: 11400000, guid: e119a0c103874fe4e979436d5ebfdb26, type: 2}
   weaponLayerName: Weapon
   weaponHolder: {fileID: 8542026593876236041}
+  currentMagazineSize: 0
+  isReloading: 0
 --- !u!1001 &8444913805861100840
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -29,7 +29,14 @@ public class PlayerShoot : NetworkBehaviour
         {
             return;
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.R) && _weaponManager.currentMagazineSize < currentweapon.magazineSize) //on recharge l'arme lorsque la touche R est appuyee et lorsque le chargeur n'est pas plein
+        {
+            StartCoroutine(_weaponManager.Reload());
+            return; //on ne peut pas tirer lorsqu'on recharge
+        }
+
+
         currentweapon = _weaponManager.getcurrentWeapon();
         if (currentweapon.fireRate<=0f)
         {
@@ -80,10 +87,21 @@ public class PlayerShoot : NetworkBehaviour
     [Client] 
     private void Shoot()
     {
-        if (!isLocalPlayer)
+        if (!isLocalPlayer || _weaponManager.isReloading)
         {
             return;
         }
+
+        if (_weaponManager.currentMagazineSize <= 0) //Si on n'a plus de balles
+        {
+            _weaponManager.Reload();
+            StartCoroutine(_weaponManager.Reload());
+            return; //parce qu'on ne veut pas le code dessous (particules,tir, ...) vu qu'on n'a plus de balles
+        }
+        _weaponManager.currentMagazineSize--; //decremente une balle dans le chargeur
+
+        Debug.Log("Il nous reste " + _weaponManager.currentMagazineSize + " balles dans le chargeur.");
+
         CmdOnShoot();
         
         RaycastHit hit;
