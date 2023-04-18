@@ -2,13 +2,13 @@ using UnityEngine;
 using Mirror;
 public class WeaponManager : NetworkBehaviour
 {
-    [SerializeField] private PlayerWeapon primaryWeapon;
+    [SerializeField] private WeaponData primaryWeapon;
 
     [SerializeField] private string weaponLayerName = "Weapon";
 
     [SerializeField] private Transform weaponHolder;
     
-    private PlayerWeapon _currentWeapon;
+    private WeaponData _currentWeapon;
     private WeaponGraphics _currentGraphics;
     void Start()
     {
@@ -16,7 +16,7 @@ public class WeaponManager : NetworkBehaviour
         EquipWeapon(primaryWeapon);
     }
 
-    void EquipWeapon(PlayerWeapon _weapon)
+    void EquipWeapon(WeaponData _weapon)
     {
         _currentWeapon = _weapon;
         GameObject weaponIns = Instantiate(_weapon.graphics,weaponHolder.position,weaponHolder.rotation);
@@ -37,7 +37,7 @@ public class WeaponManager : NetworkBehaviour
         
     }
 
-    public PlayerWeapon getcurrentWeapon()
+    public WeaponData getcurrentWeapon()
     {
         return _currentWeapon;
     }

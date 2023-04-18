@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(WeaponManager))]
 public class PlayerShoot : NetworkBehaviour
 {
-    private PlayerWeapon currentweapon;
+    private WeaponData currentweapon;
     private WeaponManager _weaponManager;
     
     [SerializeField] private Camera cam;
