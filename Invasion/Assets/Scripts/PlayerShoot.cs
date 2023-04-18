@@ -82,6 +82,9 @@ public class PlayerShoot : NetworkBehaviour
     void RpcDoShootEffects()
     {
         _weaponManager.getcurrentWeaponGraphics().muzzleFlash.Play();
+
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(currentweapon.shootSound); // cette méthode nous permet de préciser en paramètre la source audio
     }
     
     [Client] 

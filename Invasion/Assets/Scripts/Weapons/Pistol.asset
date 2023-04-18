@@ -19,5 +19,5 @@ MonoBehaviour:
   magazineSize: 10
   reloadTime: 1
   graphics: {fileID: 3122797674335244114, guid: df5b2e060aaa85a49a944ef72fb2d00b, type: 3}
-  shootSound: {fileID: 0}
-  reloadSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 114d770d3a3708740b019cfeef1dd5e5, type: 3}
+  reloadSound: {fileID: 8300000, guid: bc37ab47d16ac7249afd68080fc96582, type: 3}

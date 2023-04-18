@@ -37,6 +37,12 @@ public class Player : NetworkBehaviour
     [SerializeField] private GameObject spawnEffect;
 
     private bool firstSetup = true;
+
+    [SerializeField]
+    private AudioClip hitSound;
+    [SerializeField]
+    private AudioClip destroySound;
+
     public void Setup()
     {
         if (isLocalPlayer)
@@ -138,12 +144,16 @@ public class Player : NetworkBehaviour
     {
         if (!IsAlive)
             return;
-        
+
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(hitSound);
+
         _currentHealth -= damage;
         Debug.Log(transform.name + " has now " + _currentHealth + " HP");
 
         if (_currentHealth <= 0)
         {
+            audioSource.PlayOneShot(destroySound);
             Die(sourceID);
         }
     }
