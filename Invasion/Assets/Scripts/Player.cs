@@ -133,7 +133,7 @@ public class Player : NetworkBehaviour
         
         if (Input.GetKeyDown(KeyCode.K))
         {
-            RpcTakeDamage(25, "Joueur");
+            RpcTakeDamage(25, transform.name);
         }
 
 
@@ -200,7 +200,7 @@ public class Player : NetworkBehaviour
         if (isLocalPlayer)
         {
             GameManager.Instance.SetCameraActive(true);
-            GetComponent<PlayerSetup>().playerUIInstance.SetActive(false);
+            
         }
         
         StartCoroutine(Respawn());
