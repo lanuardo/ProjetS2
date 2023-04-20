@@ -33,8 +33,12 @@ public class IA : MonoBehaviour
 
     private void Update()
     {
-
-        player = FindLocalPlayer().transform;
+        var pl = FindLocalPlayer();
+        if (pl is not null)
+        {
+            player = pl.transform;
+        }
+        
         
         //check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
@@ -57,19 +61,24 @@ public class IA : MonoBehaviour
 
     private GameObject FindLocalPlayer()
     {
-        GameObject res = new GameObject();
-        
+        int i = 0;
         var array = FindObjectsOfType<GameObject>();
-        foreach (var g in array)
+        int lim = array.Length;
+        while (i<lim && array[i].layer != 6)
         {
-            if (g.layer == 6)
-            {
-                res = g;
-                break;
-            }
+            i++;
         }
 
-        return res;
+        if (i<lim)
+        {
+            return array[i];
+        }
+        else
+        {
+            return null;
+        }
+        
+        
     }
 
     private void Patrolling()
