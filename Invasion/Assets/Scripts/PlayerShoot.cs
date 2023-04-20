@@ -78,8 +78,7 @@ public class PlayerShoot : NetworkBehaviour
     {
         if (_weaponManager is not null)
         {
-            GameObject hitEffect = Instantiate(_weaponManager.getcurrentWeaponGraphics().hitPrefab, pos,
-                Quaternion.LookRotation(normal));
+            GameObject hitEffect = Instantiate(_weaponManager.getcurrentWeaponGraphics().hitPrefab, pos,Quaternion.LookRotation(normal));
             Destroy(hitEffect, 2f);
         }
     }

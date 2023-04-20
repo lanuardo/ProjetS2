@@ -155,7 +155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8633837538128945390
 Transform:
   m_ObjectHideFlags: 0
@@ -468,7 +468,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
-  primaryWeapon: {fileID: 11400000, guid: e119a0c103874fe4e979436d5ebfdb26, type: 2}
+  primaryWeapon: {fileID: 11400000, guid: 46e59ae35455b704587d0ac452a93177, type: 2}
   weaponLayerName: Weapon
   weaponHolder: {fileID: 8542026593876236041}
   currentMagazineSize: 0
