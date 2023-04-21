@@ -1407,6 +1407,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponChoice
       objectReference: {fileID: 0}
+    - target: {fileID: 2061435640636449070, guid: 314a1088516dd5345863c1020a3dcd35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8387471921790055501, guid: 314a1088516dd5345863c1020a3dcd35, type: 3}
       propertyPath: _assetId
       value: 1218815086

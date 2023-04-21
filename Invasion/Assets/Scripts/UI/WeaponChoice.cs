@@ -15,6 +15,7 @@ public class WeaponChoice : MonoBehaviour
         
         foreach (WeaponData weapon in weaponList)
         {
+            Debug.Log(weapon.name);
             GameObject itemgo = Instantiate(weaponChoiceItem, weaponChoiceList);
             WeaponChoiceItem item = itemgo.GetComponent<WeaponChoiceItem>();
             if (item != null)

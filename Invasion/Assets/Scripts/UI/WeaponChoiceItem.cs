@@ -38,8 +38,4 @@ public class WeaponChoiceItem : MonoBehaviour
         
     }
     
-   
-
-    
-    
 }

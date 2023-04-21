@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/lobby.unity
     guid: b0a176ad5ec1da141a2976c0fe525256
-  - enabled: 0
-    path: Assets/Scenes/test area.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Proposition de terrain.unity
     guid: d9ad28ea3ea6f6f4da2f33c9db670c61
+  - enabled: 1
+    path: Assets/Scenes/better map.unity
+    guid: b350db5d615459b4b81ed1d8b9e3832e
   m_configObjects: {}
