@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92071a329971e8243b600917d867a745, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  name: Submachine Gun
+  name: Pistol
   damage: 10
   range: 100
   fireRate: 0
   magazineSize: 10
   reloadTime: 1.5
-  graphics: {fileID: 0}
+  graphics: {fileID: 8141475546232965196, guid: 78b54b4821964374d9d08e79fd9390ff, type: 3}
   shootSound: {fileID: 8300000, guid: 114d770d3a3708740b019cfeef1dd5e5, type: 3}
   reloadSound: {fileID: 8300000, guid: bc37ab47d16ac7249afd68080fc96582, type: 3}

@@ -53,6 +53,7 @@ public class Player : NetworkBehaviour
             // changement de caméra
             GameManager.Instance.SetCameraActive(false);
             GetComponent<PlayerSetup>().playerUIInstance.SetActive(true);
+            GetComponent<PlayerSetup>().playerUIInstance.transform.SetParent(transform);
         }
 
         CmdBroadCastNewPlayerSetup();

@@ -29,7 +29,7 @@ public class PlayerShoot : NetworkBehaviour
     {
         _currentWeapon = _weaponManager.GetCurrentWeapon();
 
-        if (PauseMenu.isOn)
+        if (PauseMenu.isOn || WeaponChoice.isOn)
         {
             return;
         }

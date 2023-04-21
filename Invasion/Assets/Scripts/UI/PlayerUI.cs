@@ -53,7 +53,7 @@ using UnityEngine.UI;
                 
             }
 
-            else if (WeaponChoice.isOn && ( Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Mouse0)))
+            else if (WeaponChoice.isOn && ( Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.I)))
             {
                 ToggleWeaponMenu();
             }
@@ -63,7 +63,7 @@ using UnityEngine.UI;
         {
             weaponChoice.SetActive(!weaponChoice.activeSelf);
             WeaponChoice.isOn = weaponChoice.activeSelf;
-            Debug.Log("test");
+           
         }
         public void TogglePauseMenu()
         {

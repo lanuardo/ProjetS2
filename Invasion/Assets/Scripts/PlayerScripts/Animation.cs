@@ -14,6 +14,8 @@ namespace PlayerScripts
 
         private CharacterController _characterController;
         // Start is called before the first frame update
+
+        private Player _player;
         void Start()
         {
             _animator = GetComponent<Animator>();

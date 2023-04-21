@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92071a329971e8243b600917d867a745, type: 3}
   m_Name: Submachine Gun 1
   m_EditorClassIdentifier: 
-  name: Submachine Gun
+  name: Submachine Gun god mod
   damage: 10
   range: 100
   fireRate: 10000
