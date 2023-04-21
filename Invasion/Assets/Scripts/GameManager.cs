@@ -1,18 +1,25 @@
 using System.Linq;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static Dictionary<string, Player> _players = new Dictionary<string, Player>();
     private static Dictionary<string, IA> _intelligences = new Dictionary<string, IA>();
     private const string PlayerIdPrefix = "Player";
+
+    
+
+    
+    
+    
+    
     public MatchSettings matchSettings;
 
     public delegate void OnPlaterKilledCallBack(string player, string source);
 
     public OnPlaterKilledCallBack onPlaterKilledCallBack;
-    
-    
+
     //making singleton
     public static GameManager Instance;
 
@@ -20,6 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject sceneCamera;
     private void Awake()
     {
+        
         if (Instance == null)
         {
             Instance = this;
@@ -46,6 +54,7 @@ public class GameManager : MonoBehaviour
         _players.Add(playerId,player);
         //Rename the object Player as "Player" + id.
         player.transform.name = playerId;
+        
     }
 
     public static void UnregisterPlayer(string playerId)

@@ -117,6 +117,10 @@ namespace Mirror
         /// <summary>List of transforms populated by NetworkStartPositions</summary>
         public static List<Transform> startPositions = new List<Transform>();
         public static int startPositionIndex;
+        public static List<Transform> startPositions1 = new List<Transform>();
+        public static int startPositionIndex1;
+        public static List<Transform> startPositions2 = new List<Transform>();
+        public static int startPositionIndex2;
 
         [Header("Debug")]
         public bool timeInterpolationGui = false;
@@ -1047,6 +1051,30 @@ namespace Mirror
             startPositions = startPositions.OrderBy(transform => transform.GetSiblingIndex()).ToList();
         }
 
+        public static void RegisterStartPosition1(Transform start)
+        {
+            // Debug.Log($"RegisterStartPosition: {start.gameObject.name} {start.position}");
+            startPositions1.Add(start);
+
+            // reorder the list so that round-robin spawning uses the start positions
+            // in hierarchy order.  This assumes all objects with NetworkStartPosition
+            // component are siblings, either in the scene root or together as children
+            // under a single parent in the scene.
+            startPositions1 = startPositions1.OrderBy(transform => transform.GetSiblingIndex()).ToList();
+        }
+        
+        public static void RegisterStartPosition2(Transform start)
+        {
+            // Debug.Log($"RegisterStartPosition: {start.gameObject.name} {start.position}");
+            startPositions2.Add(start);
+
+            // reorder the list so that round-robin spawning uses the start positions
+            // in hierarchy order.  This assumes all objects with NetworkStartPosition
+            // component are siblings, either in the scene root or together as children
+            // under a single parent in the scene.
+            startPositions2 = startPositions2.OrderBy(transform => transform.GetSiblingIndex()).ToList();
+        }
+        
         /// <summary>Unregister a Transform from start positions.</summary>
         // Static because it's called from NetworkStartPosition::OnDestroy
         // and singleton may not exist yet
@@ -1056,6 +1084,16 @@ namespace Mirror
             startPositions.Remove(start);
         }
 
+        public static void UnRegisterStartPosition1(Transform start)
+        {
+            //Debug.Log($"UnRegisterStartPosition: {start.name} {start.position}");
+            startPositions1.Remove(start);
+        }
+        public static void UnRegisterStartPosition2(Transform start)
+        {
+            //Debug.Log($"UnRegisterStartPosition: {start.name} {start.position}");
+            startPositions2.Remove(start);
+        }
         /// <summary>Get the next NetworkStartPosition based on the selected PlayerSpawnMethod.</summary>
         public virtual Transform GetStartPosition()
         {
@@ -1076,7 +1114,48 @@ namespace Mirror
                 return startPosition;
             }
         }
+        
+        public virtual Transform GetStartPosition2()
+        {
+            // first remove any dead transforms
+            startPositions2.RemoveAll(t => t == null);
 
+            if (startPositions2.Count == 0)
+                return null;
+
+            if (playerSpawnMethod == PlayerSpawnMethod.Random)
+            {
+                return startPositions2[UnityEngine.Random.Range(0, startPositions2.Count)];
+            }
+            else
+            {
+                Transform startPosition2 = startPositions2[startPositionIndex2];
+                startPositionIndex2 = (startPositionIndex2 + 1) % startPositions2.Count;
+                return startPosition2;
+            }
+        }
+        
+        public virtual Transform GetStartPosition1()
+        {
+            // first remove any dead transforms
+            startPositions1.RemoveAll(t => t == null);
+
+            if (startPositions1.Count == 0)
+                return null;
+
+            if (playerSpawnMethod == PlayerSpawnMethod.Random)
+            {
+                return startPositions1[UnityEngine.Random.Range(0, startPositions.Count)];
+            }
+            else
+            {
+                Transform startPosition1 = startPositions1[startPositionIndex1];
+                startPositionIndex1 = (startPositionIndex1 + 1) % startPositions1.Count;
+                return startPosition1;
+            }
+        }
+
+        
         void OnServerConnectInternal(NetworkConnectionToClient conn)
         {
             //Debug.Log("NetworkManager.OnServerConnectInternal");
@@ -1296,7 +1375,15 @@ namespace Mirror
         public virtual void OnServerAddPlayer(NetworkConnectionToClient conn)
         {
             Transform startPos = GetStartPosition();
-            GameObject player = startPos != null
+            if (singleton.numPlayers%2==0)
+            {
+                startPos = GetStartPosition1();
+            }
+            else
+            {
+                startPos = GetStartPosition2();
+            }
+            GameObject player = startPos is not null
                 ? Instantiate(playerPrefab, startPos.position, startPos.rotation)
                 : Instantiate(playerPrefab);
 

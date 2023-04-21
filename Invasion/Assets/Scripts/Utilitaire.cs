@@ -1,7 +1,7 @@
-
+using Mirror;
 using UnityEngine;
 
-public class Utilitaire
+public class Utilitaire:NetworkBehaviour
 {
     public static void SetLayerRecursively(GameObject obj, int newlayer)
     {

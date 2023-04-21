@@ -338,6 +338,14 @@ PrefabInstance:
       propertyPath: onlineScene
       value: Assets/Scenes/Proposition de terrain.unity
       objectReference: {fileID: 0}
+    - target: {fileID: 4879562948018398721, guid: 266d216e6b54c4b40a5a67e553df1d87, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 8583926422305387177, guid: 30b9980c801d35d4a8c2c2fb6b11e816, type: 3}
+    - target: {fileID: 4879562948018398721, guid: 266d216e6b54c4b40a5a67e553df1d87, type: 3}
+      propertyPath: maxConnections
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4879562948018398724, guid: 266d216e6b54c4b40a5a67e553df1d87, type: 3}
       propertyPath: m_Name
       value: NetworkManager
@@ -460,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
