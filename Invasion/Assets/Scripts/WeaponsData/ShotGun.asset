@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92071a329971e8243b600917d867a745, type: 3}
-  m_Name: Pistol
+  m_Name: ShotGun
   m_EditorClassIdentifier: 
-  name: Pistol
-  damage: 10
-  range: 100
+  name: ShotGun
+  damage: 50
+  range: 10
   fireRate: 0
-  zoom: 45
-  magazineSize: 10
-  reloadTime: 1.5
-  graphics: {fileID: 8141475546232965196, guid: 78b54b4821964374d9d08e79fd9390ff, type: 3}
-  shootSound: {fileID: 8300000, guid: 114d770d3a3708740b019cfeef1dd5e5, type: 3}
-  reloadSound: {fileID: 8300000, guid: 7e931e38cf0948345aefad6599c97fa4, type: 3}
+  zoom: 60
+  magazineSize: 7
+  reloadTime: 3
+  graphics: {fileID: 500008771098066246, guid: 8a2c334fc14aa6344976409fe760cbcd, type: 3}
+  shootSound: {fileID: 8300000, guid: 19db2334f06305943ad20cf5fa05f040, type: 3}
+  reloadSound: {fileID: 8300000, guid: d8324abb1463fb64eafe9a7c6bf7aba2, type: 3}

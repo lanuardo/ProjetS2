@@ -1411,6 +1411,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6382724819668525479, guid: 314a1088516dd5345863c1020a3dcd35, type: 3}
+      propertyPath: weaponList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382724819668525479, guid: 314a1088516dd5345863c1020a3dcd35, type: 3}
+      propertyPath: weaponList.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ba2e256ab847cf458a762ba674d54e1, type: 2}
     - target: {fileID: 8387471921790055501, guid: 314a1088516dd5345863c1020a3dcd35, type: 3}
       propertyPath: _assetId
       value: 1218815086

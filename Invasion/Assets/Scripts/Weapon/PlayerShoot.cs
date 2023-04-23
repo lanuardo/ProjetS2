@@ -1,5 +1,6 @@
 using UnityEngine;
 using Mirror;
+using Playerscripts;
 
 [RequireComponent(typeof(WeaponManager))]
 public class PlayerShoot : NetworkBehaviour
@@ -11,6 +12,7 @@ public class PlayerShoot : NetworkBehaviour
     [SerializeField]
     private LayerMask mask;
 
+    private FPSController _player;
     private bool iszooming;
     private WeaponData _currentWeapon;
     private WeaponManager _weaponManager;
@@ -23,6 +25,7 @@ public class PlayerShoot : NetworkBehaviour
             this.enabled = false;
         }
 
+        _player = GetComponent<FPSController>();
         iszooming = false;
         _weaponManager = GetComponent<WeaponManager>();
     }
@@ -176,10 +179,12 @@ public class PlayerShoot : NetworkBehaviour
         if (iszooming)
         {
             cam.fieldOfView = _currentWeapon.zoom;
+            _player.runSpeed /= 3;
         }
         else
         {
             cam.fieldOfView = 60f;
+            _player.runSpeed *= 3;
         }
     }
 

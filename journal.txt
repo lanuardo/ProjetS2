@@ -6,3 +6,10 @@ https://www.youtube.com/watch?v=vApG8aYD5aI&t=390s: tuto animation
 
 https://www.youtube.com/watch?v=F20Sr5FlUlE: tuto throwing object
 
+https://pixabay.com/ : pour les sons
+
+https://devassets.com/assets/sci-fi-weapons/: pour des modéles d'arme
+
+https://assetstore.unity.com/packages/3d/props/guns/double-burreled-shotgun-nova-233271: pour le fusil à pompe
+
+https://www.youtube.com/watch?v=9g2VqJvWnQI: pour l'effet de zoom
