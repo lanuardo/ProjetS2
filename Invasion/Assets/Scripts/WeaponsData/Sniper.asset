@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92071a329971e8243b600917d867a745, type: 3}
-  m_Name: Pistol
+  m_Name: Sniper
   m_EditorClassIdentifier: 
-  name: Pistol
-  damage: 10
+  name: Sniper
+  damage: 100
   range: 100
   fireRate: 0
-  zoom: 45
-  magazineSize: 10
-  reloadTime: 1.5
-  graphics: {fileID: 8141475546232965196, guid: 78b54b4821964374d9d08e79fd9390ff, type: 3}
-  shootSound: {fileID: 8300000, guid: 114d770d3a3708740b019cfeef1dd5e5, type: 3}
-  reloadSound: {fileID: 8300000, guid: bc37ab47d16ac7249afd68080fc96582, type: 3}
+  zoom: 20
+  magazineSize: 1
+  reloadTime: 4
+  graphics: {fileID: 3075317148735071244, guid: 900bdb959e2355f4b82cf664172ad62c, type: 3}
+  shootSound: {fileID: 8300000, guid: b84d250e320aad54ea4a2f00a385915b, type: 3}
+  reloadSound: {fileID: 8300000, guid: 7869bb20087cc514a88611beec496d2e, type: 3}

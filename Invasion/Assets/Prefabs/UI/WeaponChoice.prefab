@@ -88,8 +88,10 @@ MonoBehaviour:
   weaponChoiceList: {fileID: 1472537542608257022}
   weaponList:
   - {fileID: 11400000, guid: b8f1c6c685b921e45ab9ea8ac4449f53, type: 2}
-  - {fileID: 11400000, guid: cb81d388abf530940b86f6b9dc072082, type: 2}
   - {fileID: 11400000, guid: 27e4605b912d6884eacf232438e236f5, type: 2}
+  - {fileID: 11400000, guid: 900ad5260cab1cf41b2c06d245a0caee, type: 2}
+  - {fileID: 11400000, guid: 5ecae0491febb2143b951a0b0f974290, type: 2}
+  - {fileID: 11400000, guid: 82f554dbe34167943b853757dc53038a, type: 2}
 --- !u!114 &8387471921790055501
 MonoBehaviour:
   m_ObjectHideFlags: 0

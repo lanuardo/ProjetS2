@@ -11,6 +11,7 @@ public class PlayerShoot : NetworkBehaviour
     [SerializeField]
     private LayerMask mask;
 
+    private bool iszooming;
     private WeaponData _currentWeapon;
     private WeaponManager _weaponManager;
 
@@ -22,6 +23,7 @@ public class PlayerShoot : NetworkBehaviour
             this.enabled = false;
         }
 
+        iszooming = false;
         _weaponManager = GetComponent<WeaponManager>();
     }
 
@@ -61,6 +63,12 @@ public class PlayerShoot : NetworkBehaviour
                 {
                     CancelInvoke("Shoot");
                 }
+            }
+            
+            if (Input.GetButtonDown("Fire2"))
+            {
+                Zoom();
+                iszooming = !iszooming;
             }
         }
     }
@@ -161,6 +169,18 @@ public class PlayerShoot : NetworkBehaviour
 
         Player player = GameManager.GetPlayer(playerId);
         player.RpcTakeDamage(damage, sourceID);
+    }
+
+    private void Zoom()
+    {
+        if (iszooming)
+        {
+            cam.fieldOfView = _currentWeapon.zoom;
+        }
+        else
+        {
+            cam.fieldOfView = 60f;
+        }
     }
 
 }

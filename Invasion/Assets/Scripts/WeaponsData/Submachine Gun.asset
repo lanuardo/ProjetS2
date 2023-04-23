@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Submachine Gun
   m_EditorClassIdentifier: 
   name: Submachine Gun
-  damage: 10
+  damage: 15
   range: 100
   fireRate: 0
-  magazineSize: 10
+  zoom: 50
+  magazineSize: 15
   reloadTime: 1.5
   graphics: {fileID: 4353128053605263299, guid: a2fd9cc91410a5f4bb584ec98b46bc27, type: 3}
   shootSound: {fileID: 8300000, guid: 114d770d3a3708740b019cfeef1dd5e5, type: 3}

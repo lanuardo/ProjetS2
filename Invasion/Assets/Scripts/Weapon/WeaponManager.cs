@@ -42,7 +42,7 @@ public class WeaponManager : NetworkBehaviour
         currentWeapon = _weapon;
         currentMagazineSize = _weapon.magazineSize;
 
-        GameObject weaponIns = Instantiate(_weapon.graphics, weaponHolder.position, weaponHolder.rotation);
+        GameObject weaponIns = Instantiate(_weapon.graphics, weaponHolder.position, Quaternion.identity);
         weaponIns.transform.SetParent(weaponHolder);
 
         currentGraphics = weaponIns.GetComponent<WeaponGraphics>();

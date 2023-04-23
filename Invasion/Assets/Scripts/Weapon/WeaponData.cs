@@ -8,6 +8,7 @@ public class WeaponData : ScriptableObject
     public float range = 100f;
 
     public float fireRate = 0f;
+    public float zoom = 60f;
 
     public int magazineSize = 10;
     public float reloadTime = 1.5f;

@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92071a329971e8243b600917d867a745, type: 3}
-  m_Name: Submachine Gun 1
+  m_Name: Rifle
   m_EditorClassIdentifier: 
-  name: Submachine Gun god mod
+  name: Rifle
   damage: 10
   range: 100
-  fireRate: 10000
-  magazineSize: 10000
-  reloadTime: 1.5
-  graphics: {fileID: 4353128053605263299, guid: a2fd9cc91410a5f4bb584ec98b46bc27, type: 3}
-  shootSound: {fileID: 8300000, guid: 114d770d3a3708740b019cfeef1dd5e5, type: 3}
-  reloadSound: {fileID: 8300000, guid: bc37ab47d16ac7249afd68080fc96582, type: 3}
+  fireRate: 20
+  zoom: 45
+  magazineSize: 20
+  reloadTime: 3
+  graphics: {fileID: 4660196362484223385, guid: 0d095832bd9a37d4db0149b5d3f0a562, type: 3}
+  shootSound: {fileID: 8300000, guid: fe907fabb578b0b4da76466ac96f842c, type: 3}
+  reloadSound: {fileID: 8300000, guid: 44757bb5a12e6a247b0015828a249a59, type: 3}

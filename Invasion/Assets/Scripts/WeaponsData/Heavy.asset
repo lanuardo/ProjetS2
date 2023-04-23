@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92071a329971e8243b600917d867a745, type: 3}
-  m_Name: Pistol
+  m_Name: Heavy
   m_EditorClassIdentifier: 
-  name: Pistol
-  damage: 10
+  name: Heavy
+  damage: 20
   range: 100
-  fireRate: 0
-  zoom: 45
-  magazineSize: 10
-  reloadTime: 1.5
-  graphics: {fileID: 8141475546232965196, guid: 78b54b4821964374d9d08e79fd9390ff, type: 3}
-  shootSound: {fileID: 8300000, guid: 114d770d3a3708740b019cfeef1dd5e5, type: 3}
-  reloadSound: {fileID: 8300000, guid: bc37ab47d16ac7249afd68080fc96582, type: 3}
+  fireRate: 5
+  zoom: 60
+  magazineSize: 30
+  reloadTime: 3.5
+  graphics: {fileID: 1144117824384452453, guid: 858d62721d515a942978714e1b529073, type: 3}
+  shootSound: {fileID: 8300000, guid: b694af6ec54887a44abf99ba20e97727, type: 3}
+  reloadSound: {fileID: 8300000, guid: 44757bb5a12e6a247b0015828a249a59, type: 3}
