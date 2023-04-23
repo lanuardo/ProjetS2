@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Submachine Gun
   m_EditorClassIdentifier: 
   name: Submachine Gun
-  damage: 15
+  damage: 10
   range: 100
-  fireRate: 0
+  fireRate: 20
   zoom: 50
   magazineSize: 15
   reloadTime: 1.5

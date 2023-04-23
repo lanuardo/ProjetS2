@@ -336,7 +336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4879562948018398721, guid: 266d216e6b54c4b40a5a67e553df1d87, type: 3}
       propertyPath: onlineScene
-      value: Assets/Scenes/Proposition de terrain.unity
+      value: Assets/Scenes/better map.unity
       objectReference: {fileID: 0}
     - target: {fileID: 4879562948018398721, guid: 266d216e6b54c4b40a5a67e553df1d87, type: 3}
       propertyPath: playerPrefab

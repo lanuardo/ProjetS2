@@ -70,8 +70,9 @@ public class PlayerShoot : NetworkBehaviour
             
             if (Input.GetButtonDown("Fire2"))
             {
-                Zoom();
+                
                 iszooming = !iszooming;
+                Zoom();
             }
         }
     }

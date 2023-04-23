@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Rifle
   m_EditorClassIdentifier: 
   name: Rifle
-  damage: 10
+  damage: 15
   range: 100
-  fireRate: 20
-  zoom: 45
+  fireRate: 15
+  zoom: 40
   magazineSize: 20
   reloadTime: 3
   graphics: {fileID: 4660196362484223385, guid: 0d095832bd9a37d4db0149b5d3f0a562, type: 3}
