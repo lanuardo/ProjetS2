@@ -2727,6 +2727,8 @@ MonoBehaviour:
   maxHealth: 100
   startposindex: 0
   team: 
+  red: {fileID: 2100000, guid: 27d586abb3458e2459f682579791d118, type: 2}
+  green: {fileID: 2100000, guid: 6e0964ee6609eab47aee1662ed07ca9b, type: 2}
   kills: 0
   deaths: 0
   disableOnDeath:

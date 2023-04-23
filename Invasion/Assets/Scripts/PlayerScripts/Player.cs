@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using JetBrains.Annotations;
 using Mirror;
@@ -20,6 +21,9 @@ public class Player : NetworkBehaviour
 
     [SyncVar]
     public string team;
+
+    public Material red;
+    public Material green;
     public float GetHealthPct()
     {
         return (float)_currentHealth / maxHealth;
@@ -45,7 +49,19 @@ public class Player : NetworkBehaviour
     private AudioClip hitSound;
     [SerializeField]
     private AudioClip destroySound;
-    
+
+    public void Start()
+    {
+        if (team == "red")
+        {
+            transform.Find("Graphics").Find("Beta_Surface").GetComponent<SkinnedMeshRenderer>().material = red;
+        }
+        else
+        {
+            transform.Find("Graphics").Find("Beta_Surface").GetComponent<SkinnedMeshRenderer>().material = green;
+        }
+    }
+
     public void Setup()
     {
         if (isLocalPlayer)
