@@ -202,23 +202,31 @@ public class Player : NetworkBehaviour
     
     private void Die([CanBeNull] string sourceID)
     {
-        
-            
-        
         IsAlive = false;
         if (sourceID is not null)
         {
             Player sourcePlayer = GameManager.GetPlayer(sourceID);
-            if (sourcePlayer is not null)
+            if (sourcePlayer is not null )
             {
-                sourcePlayer.kills++;
+                if (sourceID != name)
+                {
+                    sourcePlayer.kills++;
+                }
+                
                 GameManager.Instance.onPlaterKilledCallBack.Invoke(  transform.name, sourcePlayer.name);
 
             }
         }
-
-        deaths++;
         
+        deaths++;
+        if (team=="red")
+        {
+            TeamManager.greenscore++;
+        }
+        else
+        {
+            TeamManager.redscore++;
+        }
         
         // desactive les components lors de la mort
         foreach (var t in disableOnDeath)
