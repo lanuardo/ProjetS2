@@ -28,7 +28,11 @@ using System.Collections;
         private void Start()
         {
             _networkManager = NetworkManager.singleton;
-            GoalText.text += GameManager.Instance.matchSettings.goal;
+            if (GoalText is not null)
+            {
+                GoalText.text += GameManager.Instance.matchSettings.goal;
+
+            }
         }
 
         public void Exit()
@@ -48,34 +52,38 @@ using System.Collections;
 
         private void Update()
         {
-            redscoreText.text = ""+redscore;
-            greenscoreText.text = ""+greenscore;
-            if (redscore>=GameManager.Instance.matchSettings.goal && greenscore>=GameManager.Instance.matchSettings.goal)
+            if (redscoreText is not null && greenscoreText is not null)
             {
-                var text=popup.GetComponent<Text>();
-                text.text = "Draw";
-                popup.SetActive(true);
-            }
-            else if (redscore>=GameManager.Instance.matchSettings.goal)
-            {
-                var text=popup.GetComponent<Text>();
-                text.text = "Red team win";
-                popup.SetActive(true);
-            }
-            else if (greenscore>=GameManager.Instance.matchSettings.goal)
-            {
-                var text=popup.GetComponent<Text>();
-                text.text = "Green team win";
-                popup.SetActive(true);
-            }
-
-            if (popup.activeInHierarchy)
-            {
-                foreach (var player in GameManager.GetAllPlayers())
+                redscoreText.text = ""+redscore;
+                greenscoreText.text = ""+greenscore;
+                if (redscore>=GameManager.Instance.matchSettings.goal && greenscore>=GameManager.Instance.matchSettings.goal)
                 {
-                    Invoke("Exit",5f);
+                    var text=popup.GetComponent<Text>();
+                    text.text = "Draw";
+                    popup.SetActive(true);
+                }
+                else if (redscore>=GameManager.Instance.matchSettings.goal)
+                {
+                    var text=popup.GetComponent<Text>();
+                    text.text = "Red team win";
+                    popup.SetActive(true);
+                }
+                else if (greenscore>=GameManager.Instance.matchSettings.goal)
+                {
+                    var text=popup.GetComponent<Text>();
+                    text.text = "Green team win";
+                    popup.SetActive(true);
+                }
+
+                if (popup.activeInHierarchy)
+                {
+                    foreach (var player in GameManager.GetAllPlayers())
+                    {
+                        Invoke("Exit",5f);
+                    }
                 }
             }
+            
         }
         public static int GetScore(string teamname)
         {

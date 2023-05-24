@@ -123,19 +123,9 @@ public class Throwing : NetworkBehaviour
         
         // instantiate object to throw
         CmdThrow();
-        // add force to your projectile (+ calculate direction)
         
-        // direciton with spread
-
         
-
         
-
-        
-
-        // camerashake
-        // camShake.Shake(camShakeDuration, camShakeMagnitude);
-
         _throwsLeft--;
         _throwsToExecute--;
 

@@ -4,6 +4,8 @@ using UnityEngine;
 public class Projectile : NetworkBehaviour
 {
     public Player thrower;
+    public GameObject noisesource;
+
     [Header("Stats")] 
     public int damage;
     public bool destroyOnHit;
@@ -90,11 +92,19 @@ public class Projectile : NetworkBehaviour
     
     private void Explode()
     {
-        
+        GameObject b = null;
         // spawn explosion effect (if assigned)
         if (explosionEffect != null)
-            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        {
+            b = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        }
 
+        if (b is not null)
+        {
+            Destroy(b,2f);
+        }
+        var a=Instantiate(noisesource, transform.position, Quaternion.identity);
+        Destroy(a,2f);
         // find all the objects that are inside the explosion range
         Collider[] objectsInRange = Physics.OverlapSphere(transform.position, explosionRadius);
 
