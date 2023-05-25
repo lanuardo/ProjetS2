@@ -106,6 +106,16 @@ using System.Collections;
             return score;
         }
         
+        public static string GetTeam(Player player)
+        {
+            if (Red.Contains(player))
+            {
+                return "red";
+            }
+
+            return "green";
+        }
+        
         public static void AddMember(Player player)
         {
             

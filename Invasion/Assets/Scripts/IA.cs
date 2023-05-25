@@ -1,15 +1,26 @@
 
+using System.Linq;
+using Mirror;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public class IA : MonoBehaviour
+public class IA : NetworkBehaviour
 {
+    public GameObject noisesource;
+    public float explosionRadius;
+
+    public float explosionForce;
     public NavMeshAgent agent;
     public Transform player;
+    public Player MyPlayer;
+    public Player Ennemyplayer = null;
     public LayerMask whatIsGround, whatIsPlayer;
     public float health = 50f;
-    [SerializeField] private GameObject explosionEffect;
+    [SerializeField] private GameObject explosionEffect; 
+    [SerializeField] private float explosionDamage = 50f;
     //[SerializeField] private AudioClip explosionSound;
 
 
@@ -29,56 +40,109 @@ public class IA : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        MyPlayer = FindMyPlayer();
     }
 
     private void Update()
     {
-        var pl = FindLocalPlayer();
-        if (pl is not null)
-        {
-            player = pl.transform;
-        }
-        
-        
-        //check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange)
-        {
-            Patrolling();
-        }
-        
-        if (playerInSightRange && !playerInAttackRange)
-        {
-            ChasePlayer();
-        }
-        if (playerInSightRange && playerInAttackRange)
-        {
-            Explode();
-        }
+       Action();
     }
-
-    private GameObject FindLocalPlayer()
+    
+    private void Action()
     {
-        int i = 0;
-        var array = FindObjectsOfType<GameObject>();
-        int lim = array.Length;
-        while (i<lim && array[i].layer != 6)
+         if (Ennemyplayer is null) //enemy not found
+         {
+
+            //check for sight and attack range
+
+            
+            Collider[] colliders = Physics.OverlapSphere(transform.position, sightRange);
+            //Debug.Log("colliders size : " + colliders.Length);
+            if (colliders.Length != 0)
+            {
+                int i = 0;
+                while (i < colliders.Length && !colliders[i].CompareTag("Player"))
+                {
+                    //Debug.Log("colliders" + i + " : " + colliders[i]);
+                    i++;
+                }
+
+                if (i < colliders.Length)
+                {
+                    Ennemyplayer = colliders[i].GetComponent<Player>();
+                    playerInSightRange = Ennemyplayer.team != MyPlayer.team;
+                    player = Ennemyplayer.transform;
+                }
+                else
+                {
+                    Ennemyplayer = null;
+                }
+            }
+            Collider[] colliders2  = Physics.OverlapSphere(transform.position, attackRange);
+            if (colliders2.Length != 0)
+            {
+                int j = 0;
+                while (j < colliders2.Length && !colliders2[j].CompareTag("Player"))
+                {
+                    j++;
+                }
+
+                if (j < colliders2.Length)
+                {
+                    Ennemyplayer = colliders2[j].GetComponent<Player>();
+                    playerInAttackRange = Ennemyplayer.team != MyPlayer.team;
+                    player = Ennemyplayer.transform;
+                }
+                else
+                {
+                    Ennemyplayer = null;
+                }
+            }
+            
+
+            //Debug.Log(player + " in sight range : "+ playerInSightRange);
+            //Debug.Log(player + " in attack range : "+ playerInAttackRange);
+            
+            if (!playerInSightRange)
+            {
+                Patrolling();
+                Ennemyplayer = null;
+            }
+        
+            else if (playerInSightRange && !playerInAttackRange)
+            {
+                ChasePlayer();
+            }
+
+            else if (playerInSightRange && playerInAttackRange) 
+            {
+                Debug.Log("going into explosion");
+                Invoke(nameof(Explode2), 0.25f);
+                //Player uwu = GameManager.GetPlayer(player.name);
+                //uwu.RpcTakeDamage(explosionDamage,null);
+            }
+         }
+    }
+    
+    private Player FindMyPlayer()
+    {
+        Player[] players = GameManager.GetAllPlayers();
+        Player closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 pos = transform.position;
+        foreach (var v in players)
         {
-            i++;
+            Vector3 diff = v.transform.position - pos;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = v;
+                distance = curDistance;
+            }
         }
 
-        if (i<lim)
-        {
-            return array[i];
-        }
-        else
-        {
-            return null;
-        }
-        
-        
+        return closest;
     }
 
     private void Patrolling()
@@ -102,7 +166,7 @@ public class IA : MonoBehaviour
             walkPointSet = false;
         }
     }
-
+    
     private void SearchWalkPoint()
     {
         //calculate random point in range
@@ -136,16 +200,75 @@ public class IA : MonoBehaviour
         
     }
     
+    private void Explode2()
+    {
+        GameObject b = null;
+        // spawn explosion effect (if assigned)
+        if (explosionEffect != null)
+        {
+            b = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        }
+
+        if (b is not null)
+        {
+            Destroy(b,2f);
+        }
+        var a=Instantiate(noisesource, transform.position, Quaternion.identity);
+        Destroy(a,2f);
+        // find all the objects that are inside the explosion range
+        Collider[] objectsInRange = Physics.OverlapSphere(transform.position, explosionRadius);
+
+        // loop through all of the found objects and apply damage and explosion force
+        for (int i = 0; i < objectsInRange.Length; i++)
+        {
+            if (objectsInRange[i].gameObject == gameObject )
+            {
+                // don't break or return please, thanks
+            }
+            else
+            {
+                
+                
+                // check if object is enemy, if so deal explosionDamage
+                if (objectsInRange[i].CompareTag("Player"))
+                {
+                    objectsInRange[i].GetComponent<Player>().RpcTakeDamage(explosionDamage,null);
+                }
+
+
+
+                /*// check if object has a rigidbody
+                if (objectsInRange[i].GetComponent<Rigidbody>() != null)
+                {
+                    // custom explosionForce
+                    Vector3 objectPos = objectsInRange[i].transform.position;
+
+                    // calculate force direction
+                    Vector3 forceDirection = (objectPos - transform.position).normalized;
+
+                    // apply force to object in range
+                    objectsInRange[i].GetComponent<Rigidbody>().AddForceAtPosition(forceDirection * explosionForce + Vector3.up * explosionForce, transform.position + new Vector3(0,-0.5f,0), ForceMode.Impulse);
+
+                    Debug.Log("Kabooom " + objectsInRange[i].name);
+                }*/
+            }
+        }
+
+        DestroyEnemy();
+    }
+
+     
     public void TakeDamage(float damage)
     {
         health -= damage;
 
-        if (health <= 0) Invoke(nameof(Explode), 0.25f);
+        if (health <= 0) Invoke(nameof(Explode2), 0.25f);
     }
     
     private void DestroyEnemy()
     {
-        Destroy(gameObject);
+        //GameManager.UnregisterAI(gameObject.transform.name);
+        NetworkServer.Destroy(gameObject);
     }
     
 }

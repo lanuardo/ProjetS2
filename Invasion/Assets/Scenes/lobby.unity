@@ -346,6 +346,14 @@ PrefabInstance:
       propertyPath: maxConnections
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4879562948018398721, guid: 266d216e6b54c4b40a5a67e553df1d87, type: 3}
+      propertyPath: spawnPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879562948018398721, guid: 266d216e6b54c4b40a5a67e553df1d87, type: 3}
+      propertyPath: spawnPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 13210251117942966, guid: 9432be83467a9ec4fa526cb5f83c5afe, type: 3}
     - target: {fileID: 4879562948018398724, guid: 266d216e6b54c4b40a5a67e553df1d87, type: 3}
       propertyPath: m_Name
       value: NetworkManager

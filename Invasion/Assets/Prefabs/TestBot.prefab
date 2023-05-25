@@ -2583,6 +2583,8 @@ GameObject:
   - component: {fileID: 7550632668451268281}
   - component: {fileID: 1389599482869038134}
   - component: {fileID: 3363821275945332444}
+  - component: {fileID: 51212131623783437}
+  - component: {fileID: 5226362688009010048}
   m_Layer: 6
   m_Name: TestBot
   m_TagString: Player
@@ -2976,6 +2978,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb56eaa22d2c324dafde1da458188fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
+  redscoreText: {fileID: 0}
+  greenscoreText: {fileID: 0}
+  GoalText: {fileID: 0}
+  popup: {fileID: 0}
+--- !u!114 &51212131623783437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8583926422305387177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632b4c3019d82ba44adb5c06340ab0d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
+  cam: {fileID: 3480044515206853136}
+  attackPoint: {fileID: 5191134539105191717}
+  objectToSpawn: {fileID: 13210251117942967, guid: 9432be83467a9ec4fa526cb5f83c5afe, type: 3}
+  spawnInp: 102
+  allowButtonHold: 0
+  spawnsPerTap: 0
+  totalSpawns: 5
+  spawnCooldown: 0
+  timeBetweenSpawns: 0
+--- !u!136 &5226362688009010048
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8583926422305387177}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0
+  m_Height: 0
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8790586890224815550
 GameObject:
   m_ObjectHideFlags: 0

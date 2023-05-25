@@ -2291,6 +2291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matchSettings:
     respawnTimer: 3
+    goal: 5
   sceneCamera: {fileID: 963194225}
 --- !u!4 &602719360
 Transform:
@@ -3182,7 +3183,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0

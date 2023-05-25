@@ -155,13 +155,13 @@ public class PlayerShoot : NetworkBehaviour
                 
                 
 
-                if (hit.collider.CompareTag("Intelligence"))
-                {
-                    IA ai = hit.collider.gameObject.GetComponent<IA>();
-                    ai.TakeDamage(_currentWeapon.damage);
-                }
+                    if (hit.collider.CompareTag("Intelligence"))
+                    {
+                        IA ai = hit.collider.gameObject.GetComponent<IA>();
+                        ai.TakeDamage(_currentWeapon.damage);
+                    }
 
-                CmdOnHit(hit.point, hit.normal);
+                    CmdOnHit(hit.point, hit.normal);
             }
         }
     }
@@ -175,6 +175,18 @@ public class PlayerShoot : NetworkBehaviour
         player.RpcTakeDamage(damage, sourceID);
     }
 
+    // [ClientRpc]
+    // private void CmdAIShot(string aiId, float damage)
+    // {
+    //     Debug.Log(aiId + " a été touché.");
+    //
+    //     IA ai = GameManager.GetAI(aiId);
+    //     if (ai != null)
+    //     {
+    //         ai.TakeDamage(damage);
+    //     }
+    // }
+    
     private void Zoom()
     {
         if (iszooming)
