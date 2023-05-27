@@ -2814,11 +2814,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05bda8b4eeaba84eb55c975edd23415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 3
+  jumpPower: 4
   gravity: 10
   playerCamera: {fileID: 8467030333680755826}
   walkSpeed: 5
-  runSpeed: 20
+  runSpeed: 10
   lookXLimit: 90
   lookSpeed: 2
   canMove: 1
@@ -2841,7 +2841,7 @@ MonoBehaviour:
   attackPoint: {fileID: 5191134539105191717}
   objectToThrow: {fileID: 5892132452817777273, guid: f2018e30df8db5e40bb5f0d6840bed96, type: 3}
   throwInp: 103
-  totalThrows: 999999999
+  totalThrows: 2
   throwCooldown: 0
   timeBetweenThrows: 0
   throwForce: 10
@@ -3006,7 +3006,7 @@ MonoBehaviour:
   spawnInp: 102
   allowButtonHold: 0
   spawnsPerTap: 0
-  totalSpawns: 5
+  totalSpawns: 2
   spawnCooldown: 0
   timeBetweenSpawns: 0
 --- !u!136 &5226362688009010048

@@ -1,4 +1,5 @@
 
+using System;
 using System.Linq;
 using Mirror;
 using Unity.VisualScripting;
@@ -41,6 +42,7 @@ public class IA : NetworkBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         MyPlayer = FindMyPlayer();
+        Debug.Log("my player :" + MyPlayer.name);
     }
 
     private void Update()
@@ -48,15 +50,31 @@ public class IA : NetworkBehaviour
 
        Action();
     }
-    
+
+    /*private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            
+            Player CollisionPlayer = collision.gameObject.GetComponent<Player>();
+            Debug.Log("collision with " + CollisionPlayer.name);
+            if (CollisionPlayer.team != MyPlayer.team)
+            {
+                Instantiate(explosionEffect, transform.position, Quaternion.identity);
+                var a=Instantiate(noisesource, transform.position, Quaternion.identity);
+                Destroy(a,2f);
+                CmdPlayerHit(collision.collider.name, explosionDamage, null);
+            }
+        }
+    }*/
+
     private void Action()
     {
-         if (Ennemyplayer is null) //enemy not found
-         {
+         
 
             //check for sight and attack range
 
-            
+            /*
             Collider[] colliders = Physics.OverlapSphere(transform.position, sightRange);
             //Debug.Log("colliders size : " + colliders.Length);
             if (colliders.Length != 0)
@@ -64,21 +82,35 @@ public class IA : NetworkBehaviour
                 int i = 0;
                 while (i < colliders.Length && !colliders[i].CompareTag("Player"))
                 {
-                    //Debug.Log("colliders" + i + " : " + colliders[i]);
+                    Player RandomPlayer = colliders[i].GetComponent<Player>();
+                    if (RandomPlayer != null && RandomPlayer != MyPlayer && RandomPlayer.team != MyPlayer.team)
+                    {
+                        Ennemyplayer = RandomPlayer;
+                        player = Ennemyplayer.transform;
+                        playerInSightRange = true;
+                        Debug.Log("ennemy player : " + Ennemyplayer.name);
+                        break;
+                    }
+                    else
+                    {
+                        Ennemyplayer = null;
+                    }
                     i++;
                 }
-
-                if (i < colliders.Length)
-                {
-                    Ennemyplayer = colliders[i].GetComponent<Player>();
-                    playerInSightRange = Ennemyplayer.team != MyPlayer.team;
-                    player = Ennemyplayer.transform;
-                }
-                else
-                {
-                    Ennemyplayer = null;
-                }
+                
+                
             }
+            */
+            
+
+            Ennemyplayer = FindEnemyPlayer();
+            if (Ennemyplayer != null)
+            {
+                player = Ennemyplayer.transform;
+                playerInSightRange = true;
+                Debug.Log("ennemy player targeted : " + Ennemyplayer.name);
+            }
+            
             Collider[] colliders2  = Physics.OverlapSphere(transform.position, attackRange);
             if (colliders2.Length != 0)
             {
@@ -90,13 +122,14 @@ public class IA : NetworkBehaviour
 
                 if (j < colliders2.Length)
                 {
-                    Ennemyplayer = colliders2[j].GetComponent<Player>();
-                    playerInAttackRange = Ennemyplayer.team != MyPlayer.team;
-                    player = Ennemyplayer.transform;
-                }
-                else
-                {
-                    Ennemyplayer = null;
+                    Player RandomPlayer = colliders2[j].GetComponent<Player>();
+                    if (RandomPlayer != MyPlayer && RandomPlayer.team != MyPlayer.team)
+                    {
+                        Ennemyplayer = RandomPlayer;
+                        player = Ennemyplayer.transform;
+                        playerInAttackRange = true;
+                        Debug.Log("ennemy player in attackrange : " + Ennemyplayer.name);
+                    }
                 }
             }
             
@@ -104,27 +137,34 @@ public class IA : NetworkBehaviour
             //Debug.Log(player + " in sight range : "+ playerInSightRange);
             //Debug.Log(player + " in attack range : "+ playerInAttackRange);
             
-            if (!playerInSightRange)
+            /*if (!playerInSightRange)
             {
                 Patrolling();
                 Ennemyplayer = null;
-            }
+            }*/
         
-            else if (playerInSightRange && !playerInAttackRange)
+            if (playerInSightRange && !playerInAttackRange)
             {
                 ChasePlayer();
             }
 
-            else if (playerInSightRange && playerInAttackRange) 
+            if (playerInSightRange && playerInAttackRange) 
             {
                 Debug.Log("going into explosion");
                 Invoke(nameof(Explode2), 0.25f);
                 //Player uwu = GameManager.GetPlayer(player.name);
                 //uwu.RpcTakeDamage(explosionDamage,null);
             }
-         }
+         
     }
-    
+    [Command]
+    private void CmdPlayerHit(string playerId, float damage, string sourceID)
+    {
+        Debug.Log(playerId + " a été touché.");
+
+        Player player = GameManager.GetPlayer(playerId);
+        player.RpcTakeDamage(damage, sourceID);
+    }
     private Player FindMyPlayer()
     {
         Player[] players = GameManager.GetAllPlayers();
@@ -136,6 +176,26 @@ public class IA : NetworkBehaviour
             Vector3 diff = v.transform.position - pos;
             float curDistance = diff.sqrMagnitude;
             if (curDistance < distance)
+            {
+                closest = v;
+                distance = curDistance;
+            }
+        }
+        return closest;
+    }
+    
+
+    private Player FindEnemyPlayer()
+    {
+        Player[] players = GameManager.GetAllPlayers();
+        Player closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 pos = transform.position;
+        foreach (var v in players)
+        {
+            Vector3 diff = v.transform.position - pos;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance && v.team != MyPlayer.team)
             {
                 closest = v;
                 distance = curDistance;
