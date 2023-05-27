@@ -8,7 +8,8 @@ public class SpawnAI : NetworkBehaviour
 {
     public Transform cam;
     public GameObject attackPoint;
-    public IA objectToSpawn;
+    public IA objectRed;
+    public IA objectGreen;
     public KeyCode spawnInp;
     [Header("Extra Settings")]
     public bool allowButtonHold;
@@ -16,6 +17,7 @@ public class SpawnAI : NetworkBehaviour
     public int spawnsPerTap;
     public int totalSpawns;
     public float spawnCooldown, timeBetweenSpawns;
+    public Player MyPlayer;
 
     int _spawnsLeft, _spawnsToExecute;
 
@@ -23,7 +25,7 @@ public class SpawnAI : NetworkBehaviour
     void Start()
     {
         _spawnsLeft = totalSpawns;
-        
+        MyPlayer = GetComponent<Player>();
         _readyToSpawn = true;
     }
 
@@ -51,7 +53,16 @@ public class SpawnAI : NetworkBehaviour
     [ClientRpc]
     void RpcSpawnObject()
     {
-        IA ai =  Instantiate(objectToSpawn, attackPoint.transform.position, cam.rotation);
+        if (MyPlayer.team == "red")
+        {
+            IA ai =  Instantiate(objectRed, attackPoint.transform.position, cam.rotation);
+
+        }
+        else
+        {
+            IA ai =  Instantiate(objectGreen, attackPoint.transform.position, cam.rotation);
+
+        }
         //GameManager.RegisterAI(objectToSpawn.GetComponent<NetworkIdentity>().netId.ToString(), objectToSpawn);
         //NetworkServer.Spawn(ai.gameObject);
     }

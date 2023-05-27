@@ -3002,13 +3002,15 @@ MonoBehaviour:
   syncInterval: 0.1
   cam: {fileID: 3480044515206853136}
   attackPoint: {fileID: 5191134539105191717}
-  objectToSpawn: {fileID: 13210251117942967, guid: 9432be83467a9ec4fa526cb5f83c5afe, type: 3}
+  objectRed: {fileID: 13210251117942967, guid: 684232b6a6ad3914eb6856dedf2c3c50, type: 3}
+  objectGreen: {fileID: 13210251117942967, guid: 6ffa1453c0842274386aca7aae448cf8, type: 3}
   spawnInp: 102
   allowButtonHold: 0
   spawnsPerTap: 0
   totalSpawns: 2
   spawnCooldown: 0
   timeBetweenSpawns: 0
+  MyPlayer: {fileID: 0}
 --- !u!136 &5226362688009010048
 CapsuleCollider:
   m_ObjectHideFlags: 0
