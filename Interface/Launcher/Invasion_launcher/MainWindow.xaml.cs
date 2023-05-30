@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+
 
 namespace Invasion_launcher
 {
@@ -30,7 +32,7 @@ namespace Invasion_launcher
             InitializeComponent();
 
             musicplayer = new System.Media.SoundPlayer();
-            musicplayer.SoundLocation = "C:/Users/mcblo/Downloads/invasion_music2.wav";
+            musicplayer.SoundLocation = "C:/Users/mcblo/Desktop/invasion_music_no_cpr.wav";
             musicplayer.PlayLooping();
 
         }
@@ -41,8 +43,9 @@ namespace Invasion_launcher
         }
         private void Website_Click(object sender, RoutedEventArgs e)
         {
-            string htmlFilePath = "C:/Users/alexl/epita/projets2/ProjetS2/Site/WebSite/index.html";
-            string fullPath = System.IO.Path.GetFullPath(htmlFilePath);
+            string launcherPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+
+            string fullPath = System.IO.Path.Combine(launcherPath, "WebSite/index.html");
             ProcessStartInfo psi = new ProcessStartInfo
             {
                 FileName = "cmd.exe",
