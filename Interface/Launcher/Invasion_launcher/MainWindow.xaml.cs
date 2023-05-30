@@ -30,9 +30,11 @@ namespace Invasion_launcher
         public MainWindow()
         {
             InitializeComponent();
+            string launcherPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
 
+            string musicPath = System.IO.Path.Combine(launcherPath, "sound/invasion_music_no_cpr.wav");
             musicplayer = new System.Media.SoundPlayer();
-            musicplayer.SoundLocation = "C:/Users/mcblo/Desktop/invasion_music_no_cpr.wav";
+            musicplayer.SoundLocation = musicPath;
             musicplayer.PlayLooping();
 
         }

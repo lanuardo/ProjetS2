@@ -115,6 +115,7 @@
     <Resource Include="sound_icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Content Include="Properties\invasion_music_no_cpr.wav" />
     <Content Include="WebSite\aymeric hesnard\site\download.html" />
     <Resource Include="WebSite\aymeric hesnard\site\Image1.png" />
     <Content Include="WebSite\aymeric hesnard\site\index.html" />
