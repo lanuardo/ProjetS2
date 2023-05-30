@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{74412E4F-A61F-4FD3-8C58-CC33C28C208D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Invasion_launcher</RootNamespace>
+    <AssemblyName>Invasion_launcher</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="WebSite\Documents\test_doc.pdf" />
+    <Resource Include="WebSite\fonts\fa-solid-900.ttf" />
+    <Resource Include="WebSite\fonts\zorque.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bul.jpg" />
+    <Resource Include="launcherwall.png" />
+    <Resource Include="launcherwall_former.jpg" />
+    <Resource Include="LES_RADIANTS_img.PNG" />
+    <Resource Include="logo_invasion.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\bul.jpg" />
+    <Resource Include="img\bullet_hole.png" />
+    <Resource Include="img\launcherwall.png" />
+    <Resource Include="img\launcherwall_former.jpg" />
+    <Resource Include="img\launcherwall_hq.jpg" />
+    <Resource Include="img\LES_RADIANTS_img.PNG" />
+    <Resource Include="img\logo_invasion.PNG" />
+    <Resource Include="sound_icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="WebSite\aymeric hesnard\site\download.html" />
+    <Resource Include="WebSite\aymeric hesnard\site\Image1.png" />
+    <Content Include="WebSite\aymeric hesnard\site\index.html" />
+    <Resource Include="WebSite\aymeric hesnard\site\invasion.png" />
+    <Content Include="WebSite\aymeric hesnard\site\presentation.html" />
+    <Content Include="WebSite\aymeric hesnard\site\ressources.html" />
+    <Content Include="WebSite\aymeric hesnard\site\styles\style.css" />
+    <Content Include="WebSite\download.html" />
+    <Content Include="WebSite\fiches_produit\AMD Ryzen 5 3600 Wraith Stealth %283.6 GHz  4.2 GHz%29.html" />
+    <Content Include="WebSite\fiches_produit\AOC 21.5 LED - E2270SWHN.html" />
+    <Content Include="WebSite\fiches_produit\ASUS D641SC-I79700005R.html" />
+    <Content Include="WebSite\fiches_produit\ASUS Vivobook S15 S533FA-EJ052T.html" />
+    <Content Include="WebSite\fiches_produit\be quiet! Dark Rock 4.html" />
+    <Content Include="WebSite\fiches_produit\Cooler Master MWE Bronze 650W V2.html" />
+    <Content Include="WebSite\fiches_produit\Corsair Carbide Series 175R RGB %28Noir%29.html" />
+    <Content Include="WebSite\fiches_produit\Corsair CX750F RGB 80PLUS Bronze %28Blanc%29.html" />
+    <Content Include="WebSite\fiches_produit\Corsair Vengeance LPX Series Low Profile 32 Go %282x 16 Go%29 DDR4 3200 MHz CL16.html" />
+    <Content Include="WebSite\fiches_produit\Gigabyte Z490 UD.html" />
+    <Content Include="WebSite\fiches_produit\HyperX Fury 16 Go %282 x 8 Go%29 DDR4 2666 MHz CL16.html" />
+    <Content Include="WebSite\fiches_produit\Intel Core i5-10400F %282.9 GHz  4.3 GHz%29.html" />
+    <Content Include="WebSite\fiches_produit\Kingston SSD A2000 1 To.html" />
+    <Content Include="WebSite\fiches_produit\LDLC PC10 Bazooka.html" />
+    <Content Include="WebSite\fiches_produit\MSI 23.8 LED - Optix G241.html" />
+    <Content Include="WebSite\fiches_produit\MSI GeForce RTX 3070 SUPRIM 8G.html" />
+    <Content Include="WebSite\fiches_produit\MSI GF65 Thin 9SEXR-692FR.html" />
+    <Content Include="WebSite\fiches_produit\MSI MAG CORELIQUID 240R.html" />
+    <Content Include="WebSite\fiches_produit\MSI MAG FORGE 100R.html" />
+    <Content Include="WebSite\fiches_produit\MSI MPG B550 GAMING PLUS.html" />
+    <Content Include="WebSite\fiches_produit\MSI Radeon RX 580 ARMOR 8G OC.html" />
+    <Content Include="WebSite\fiches_produit\Samsung SSD 860 EVO 500 Go.html" />
+    <Content Include="WebSite\fiches_produit\Seagate BarraCuda 2 To %28ST2000DM008%29.html" />
+    <Content Include="WebSite\fiches_produit\Seagate IronWolf 4 To.html" />
+    <Resource Include="WebSite\img\dl_30.png" />
+    <Resource Include="WebSite\img\dl_60.png" />
+    <Resource Include="WebSite\img\dl_90.png" />
+    <Resource Include="WebSite\img\invasionwall2.jpg" />
+    <Resource Include="WebSite\img\logo_invasion.PNG" />
+    <Resource Include="WebSite\img\mini_logo_invasion.PNG" />
+    <Resource Include="WebSite\img\rsrc100.png" />
+    <Resource Include="WebSite\img\rsrc50.png" />
+    <Content Include="WebSite\index.html" />
+    <Content Include="WebSite\presentation.html" />
+    <Content Include="WebSite\ressources.html" />
+    <Content Include="WebSite\styles\style.css" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
