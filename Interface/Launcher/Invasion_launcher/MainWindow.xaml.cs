@@ -35,7 +35,7 @@ namespace Invasion_launcher
             InitializeComponent();
             string launcherPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
 
-            string musicPath = System.IO.Path.Combine(launcherPath, "sound/invasion_music_no_cpr.wav");
+            string musicPath = System.IO.Path.Combine(launcherPath, "sound/invasion_music_no_cpr2.wav");
             musicplayer = new System.Media.SoundPlayer();
             musicplayer.SoundLocation = musicPath;
             musicplayer.PlayLooping();
