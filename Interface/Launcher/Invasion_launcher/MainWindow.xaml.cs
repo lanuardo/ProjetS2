@@ -45,8 +45,11 @@ namespace Invasion_launcher
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            string gamePath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
 
-            Process.Start("C:/Users/alexl/epita/projets2/ProjetS2/My project/Build/Invasion.exe");
+            string buildPath = System.IO.Path.Combine(gamePath, "build/bui.exe");
+
+            Process.Start(buildPath);
         }
         private void Website_Click(object sender, RoutedEventArgs e)
         {
