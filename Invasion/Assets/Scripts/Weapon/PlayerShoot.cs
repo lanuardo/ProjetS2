@@ -149,6 +149,7 @@ public class PlayerShoot : NetworkBehaviour
                     {
                         if (transform.GetComponent<Player>().team != hit.collider.GetComponent<Player>().team)
                         {
+                            Debug.Log("test");
                             CmdPlayerShot(hit.collider.name, _currentWeapon.damage, transform.name);
                         }
                     }

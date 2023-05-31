@@ -17,7 +17,7 @@ using System.Collections;
 
         [SerializeField] private GameObject popup;
 
-        
+        public static bool popupisactive;
         public static List<Player> Red = new List<Player>();
         public static List<Player> Green = new List<Player>();
 
@@ -27,6 +27,7 @@ using System.Collections;
         private NetworkManager _networkManager;
         private void Start()
         {
+            popupisactive = false;
             _networkManager = NetworkManager.singleton;
             if (GoalText is not null)
             {
@@ -39,10 +40,12 @@ using System.Collections;
         {
             if (isClientOnly)
             {
+                popup.SetActive(false);
                 _networkManager.StopClient();
             }
             else
             {
+                popup.SetActive(false);
                 _networkManager.StopHost();
             }
         }
@@ -61,30 +64,49 @@ using System.Collections;
                     var text=popup.GetComponent<Text>();
                     text.text = "Draw";
                     popup.SetActive(true);
+                    popupisactive = true;
                 }
                 else if (redscore>=GameManager.Instance.matchSettings.goal)
                 {
                     var text=popup.GetComponent<Text>();
                     text.text = "Red team win";
                     popup.SetActive(true);
+                    popupisactive = true;
                 }
                 else if (greenscore>=GameManager.Instance.matchSettings.goal)
                 {
                     var text=popup.GetComponent<Text>();
                     text.text = "Green team win";
                     popup.SetActive(true);
+                    popupisactive = true;
                 }
 
-                if (popup.activeInHierarchy)
+                if (popupisactive)
                 {
+                    if (Cursor.lockState!=CursorLockMode.None)
+                    {
+                        Cursor.lockState = CursorLockMode.None;
+                        Cursor.visible = true;
+                    }
+                    
                     foreach (var player in GameManager.GetAllPlayers())
                     {
+                        player.deaths = 0;
+                        player.kills = 0;
+                        var a=player.GetComponent<Throwing>();
+                        a.totalThrows = 2;
+                        var b = player.GetComponent<SpawnAI>();
+                        b.totalSpawns = 2;
                         Invoke("Exit",5f);
                     }
+                    
+                    
                 }
             }
             
         }
+
+        
         public static int GetScore(string teamname)
         {
             int score = 0;

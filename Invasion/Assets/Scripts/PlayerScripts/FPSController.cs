@@ -44,7 +44,7 @@ namespace Playerscripts
 
         void Update()
         {
-            if (PauseMenu.isOn || WeaponChoice.isOn)
+            if (PauseMenu.isOn || WeaponChoice.isOn || TeamManager.popupisactive)
             {
                 //active la souris dans le menu
                 if (Cursor.lockState!=CursorLockMode.None)
