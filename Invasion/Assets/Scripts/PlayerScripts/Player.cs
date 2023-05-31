@@ -171,7 +171,7 @@ public class Player : NetworkBehaviour
 
     }
 
-    [ClientRpc]
+    [Command]
     public void RpcSetTeam(string _team)
     {
         team = _team;
