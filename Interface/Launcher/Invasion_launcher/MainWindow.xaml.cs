@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Diagnostics;
 using System.Windows.Controls;
+
 using System.Windows.Media;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -16,12 +17,14 @@ using System.Windows.Shapes;
 using System.IO;
 
 
+
 namespace Invasion_launcher
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
+
 
     {
         private bool isMuted = false;
@@ -32,15 +35,17 @@ namespace Invasion_launcher
             InitializeComponent();
             string launcherPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
 
-            string musicPath = System.IO.Path.Combine(launcherPath, "sound/invasion_music_no_cpr.wav");
+            string musicPath = System.IO.Path.Combine(launcherPath, "sound/invasion_music_no_cpr2.wav");
             musicplayer = new System.Media.SoundPlayer();
             musicplayer.SoundLocation = musicPath;
             musicplayer.PlayLooping();
+
 
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+
             Process.Start("C:/Users/alexl/epita/projets2/ProjetS2/My project/Build/Invasion.exe");
         }
         private void Website_Click(object sender, RoutedEventArgs e)
@@ -48,6 +53,7 @@ namespace Invasion_launcher
             string launcherPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
 
             string fullPath = System.IO.Path.Combine(launcherPath, "WebSite/index.html");
+
             ProcessStartInfo psi = new ProcessStartInfo
             {
                 FileName = "cmd.exe",
@@ -56,6 +62,7 @@ namespace Invasion_launcher
             };
             Process.Start(psi);
         }
+
 
 
         private void SoundMute_Click(object sender, RoutedEventArgs e)
@@ -76,5 +83,6 @@ namespace Invasion_launcher
                 }
             }
         }
+
     }
 }

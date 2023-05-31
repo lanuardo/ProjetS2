@@ -7,24 +7,6 @@ html,
 	box-sizing: border-box;
 }
 
-.home {
-	background-image: url("../Image1.png");
-	height: 600px;
-	width: 100%;
-	position: relative;
-	display: flex;
-	background-size: cover;
-	justify-content: center;
-	align-items: center;
-}
-.homebis {
-	height: 100%;
-	width: 100%;
-	position: absolute;
-
-	top: 0;
-	left: 0;
-}
 
 
 .utilisée {
@@ -45,6 +27,10 @@ h1{
 
 h3{
 	font-family: "zorque";
+	font-weight: 700;
+	margin-bottom: 0;
+	font-size: 32px;
+	text-align: center;
 }
 
 header {
@@ -72,7 +58,7 @@ header ul li:first-child {
 	margin-left: 5px;
 }
 
-header ul li a.navlink:hover {
+header ul li :hover {
 	background-color: rgb(255, 0, 0);
 	color: #ffffff;
 	border-radius: 5px;
@@ -81,6 +67,36 @@ header ul li a.navlink:hover {
 
 header ul li {
 	float: left;
+}
+
+#home {
+	margin-top: 5px;
+	margin-right: 15px;
+	margin-left: 5px;
+	background-color: rgb(255, 255, 255);
+	color: #000000;
+	font-weight: bold;
+	font-family: "zorque";
+	text-align: center;
+	
+	margin: 6px 0;
+	text-decoration: none;
+	transition: background-color .3s;
+	border-radius: 5px;
+}
+
+.actual {
+	background-color: rgb(255, 255, 255);
+	color: #000000;
+	display: block;
+	font-weight: bold;
+	font-family: "zorque";
+	text-align: center;
+	padding: 11px 16px;
+	margin: 6px 0;
+	text-decoration: none;
+	transition: background-color .3s;
+	border-radius: 5px;
 }
 
 header ul li a.navlink {
@@ -106,12 +122,14 @@ header ul li a.connect {
 
 .container {
 	margin:  35px 50px;
-	min-height: 631px;
-	margin-bottom: 0;
+	min-height: 100%;
+	padding-bottom: 30px; 
+	box-sizing: border-box;
+	
 }
 
 .container2 {
-	margin-left: 200px;
+	margin-left: 0px;
 }
 
 
@@ -143,6 +161,14 @@ header ul li a.connect {
 	
 }
 
+.fp-items3 {
+	flex: 0 0 33%;
+	max-width: 33%;
+	position:relative;
+	width: 150%;
+	padding-right:575px ;
+}
+
 .item {
 	padding: 30px;
 	transition: all .3s;
@@ -150,7 +176,7 @@ header ul li a.connect {
 	box-shadow: 0 0 5px 0 rgba(68, 43, 148, .2);
 	background: black;
 	color: white;
-	border-radius: 6px;
+	border-radius: 10px;
 	height: 200px;
 	
 }
@@ -160,11 +186,19 @@ header ul li a.connect {
 	margin-bottom: 70px;
 	box-shadow: 0 0 5px 0 rgba(68, 43, 148, .2);
 	background: #fff;
-	border-radius: 6px;
-	height: 500px;
+	border-radius: 10px;
+	height: 530px;
 	width: 550px;
 
 
+}
+
+
+.item3 {
+	padding: 30px;
+	box-shadow: 0 0 5px 0 rgba(68, 43, 148, .2);
+	background: #fff;
+	border-radius: 6px;
 }
 
 *
@@ -181,12 +215,7 @@ header ul li a.connect {
 	font-family: "century";
 }
 
-h3 {
-	font-weight: 700;
-	margin-bottom: 0;
-	font-size: 32px;
-	text-align: center;
-}
+
 
 .items-container h3 {
 	margin-bottom: 60px;
@@ -205,6 +234,11 @@ h3 {
 /* Pied de page */
 
 footer {
+	height: 30px;
+	postion: relative;
+	margin-top: -30px;
+	clear: both;
+	
 	background: rgb(0, 0, 0);
 	color: white;
 	font-size: 8px;
@@ -224,6 +258,61 @@ footer h3 {
 }
 
 
+.content{
+	text-align: center;
+}
+.content h1{
+	font-size: 155px;
+	color: #ffffff;
+	font-weight: 600;
+	transition: 0.5s;
+}
+.content h1:hover{
+	-webkit-text-stroke: 2px #fff;
+	color:transparent;
+
+}
+.content a{
+	text-decoration: none;
+	display: inline-block;
+	color: #ffffff;
+	font-size: 24px;
+	border: 2px solid #ffffff;
+	padding: 14px 70px;
+	border-radius: 50px;
+	margin-top: 50;
+}
+
+.hero{
+	width: 100%;
+	height: 100vh;
+	position: relative;
+	padding: 0 5%;
+	display:  flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.back-video{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+}
+
+@media (min-aspect-ratio: 16/9){
+	.back-video{
+		width: 100%;
+		height: auto;
+	}
+}
+@media (max-aspect-ratio: 16/9){
+	.back-video{
+		width: auto;
+		height: 100%;
+	}
+}
+
 
 @font-face {
 	font-family: 'Font Awesome 5 Free';
@@ -231,4 +320,47 @@ footer h3 {
 	font-weight: 900;
 	font-display: block;
 	src: url("../fonts/fa-solid-900.ttf") format("truetype")
+}
+
+.diaporama {
+  width: 960px;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto; /* Ajout de la propriété margin */
+  display: flex; /* Ajout de la propriété display */
+  justify-content: center; /* Centrage horizontal */
+  align-items: center; /* Centrage vertical */
+}
+
+.diaporama img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.diaporama img:first-child {
+  opacity: 1;
+}
+
+@keyframes diaporama-animation {
+  0% { opacity: 0; }
+  33% { opacity: 1; }
+  66% { opacity: 0; }
+}
+
+.diaporama img:nth-child(1) {
+  animation: diaporama-animation 9s infinite;
+}
+
+.diaporama img:nth-child(2) {
+  animation: diaporama-animation 9s infinite 3s;
+}
+
+.diaporama img:nth-child(3) {
+  animation: diaporama-animation 9s infinite 6s;
 }

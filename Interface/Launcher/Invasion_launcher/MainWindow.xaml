@@ -65,17 +65,21 @@
         <Image HorizontalAlignment="Left" Height="40" Margin="232,133,0,0" VerticalAlignment="Top" Width="50" Source="/bul.jpg" RenderTransformOrigin="5.5,1.793"/>
         <Image HorizontalAlignment="Left" Height="40" Margin="517,82,0,0" VerticalAlignment="Top" Width="50" Source="/bul.jpg" RenderTransformOrigin="5.5,1.793"/>
         <Image HorizontalAlignment="Left" Height="40" Margin="272,358,0,0" VerticalAlignment="Top" Width="50" Source="/bul.jpg" RenderTransformOrigin="5.5,1.793"/>
+
         <MediaElement Name="myMediaElement" HorizontalAlignment="Left" Height="152" Margin="24,24,0,0" VerticalAlignment="Top" Width="258" Source="C:\Users\mcblo\Downloads\demo_test_invasion.mp4" LoadedBehavior="Play" Volume="0">
+
             <MediaElement.Triggers>
                 <EventTrigger RoutedEvent="MediaElement.Loaded">
                     <EventTrigger.Actions>
                         <BeginStoryboard>
                             <Storyboard>
 
+
                                 <!-- The MediaTimeline has a RepeatBehavior="Forever" which makes the media play
                      over and over indefinitely.-->
                                 <MediaTimeline Source="C:\Users\mcblo\Downloads\invasion_video.mp4" Storyboard.TargetName="myMediaElement"  
                  RepeatBehavior="Forever" />
+
 
                             </Storyboard>
                         </BeginStoryboard>
@@ -83,6 +87,7 @@
                 </EventTrigger>
             </MediaElement.Triggers>
         </MediaElement>
+
         <Button x:Name="SoundMute" HorizontalAlignment="Left" Margin="700,120,0,0" VerticalAlignment="Top" Height="50" Width="50" Background="White" Foreground="Black" FontFamily="Arial Black" Click="SoundMute_Click" >
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
@@ -107,5 +112,6 @@
             </Button.Style>
             <Image Source="/sound_icon.PNG"/>
         </Button>
+
     </Grid>
 </Window>
