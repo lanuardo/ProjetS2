@@ -177,7 +177,7 @@ public class Player : NetworkBehaviour
         team = _team;
     }
     
-    [ClientRpc] //server to client
+    [Client] //server to client
     public void RpcTakeDamage(float damage, [CanBeNull] string sourceID)
     {
         if (!IsAlive)
