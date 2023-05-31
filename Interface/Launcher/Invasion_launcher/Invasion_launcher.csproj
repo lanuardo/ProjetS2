@@ -116,6 +116,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Content Include="Properties\invasion_music_no_cpr.wav" />
+    <Content Include="video\demo_invasion_final.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="WebSite\aymeric hesnard\site\download.html" />
     <Resource Include="WebSite\aymeric hesnard\site\Image1.png" />
     <Content Include="WebSite\aymeric hesnard\site\index.html" />
